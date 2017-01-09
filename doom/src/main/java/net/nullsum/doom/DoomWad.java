@@ -1,4 +1,4 @@
-package com.beloko.doom;
+package net.nullsum.doom;
 
 public class DoomWad {
 	String title;

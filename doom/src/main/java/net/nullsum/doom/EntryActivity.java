@@ -1,4 +1,4 @@
-package com.beloko.doom;
+package net.nullsum.doom;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;

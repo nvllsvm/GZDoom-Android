@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.beloko.doom"
+    package="net.nullsum.doom"
     android:versionCode="31"
     android:versionName="4.1" >
 
@@ -15,7 +15,7 @@
         android:icon="@drawable/launch"
         android:largeHeap="true" >
         <activity
-            android:name="com.beloko.doom.EntryActivity"
+            android:name="net.nullsum.doom.EntryActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
             android:launchMode="singleInstance"
