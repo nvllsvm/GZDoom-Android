@@ -53,7 +53,6 @@ public class LaunchFragmentGZdoom extends Fragment{
 	DoomWad selectedMod = null;  
 
 
-	String demoBaseDir;   
 	String fullBaseDir;
 
 	ArrayList<String> argsHistory = new ArrayList<String>();
@@ -64,7 +63,6 @@ public class LaunchFragmentGZdoom extends Fragment{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		demoBaseDir = AppSettings.getQuakeDemoDir();
 		fullBaseDir = AppSettings.getQuakeFullDir();
 
 		AppSettings.createDirectories(getActivity());
@@ -75,7 +73,6 @@ public class LaunchFragmentGZdoom extends Fragment{
 	@Override
 	public void onHiddenChanged(boolean hidden) {
 		if (GD.DEBUG) Log.d(LOG,"onHiddenChanged");
-		demoBaseDir = AppSettings.getQuakeDemoDir();
 		fullBaseDir = AppSettings.getQuakeFullDir();
 		
 		if (gameArgsTextView == null) //rare device call onHiddenchange before the view is created, detect this to prevent crash

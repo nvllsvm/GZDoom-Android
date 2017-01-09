@@ -22,7 +22,4 @@
         <item>Small</item>
     </string-array>
 
-    <string name="title_activity_cloud_save">CloudSaveActivity</string>
-    <string name="title_activity_google_play_services">GooglePlayServicesActivity</string>
-
 </resources>

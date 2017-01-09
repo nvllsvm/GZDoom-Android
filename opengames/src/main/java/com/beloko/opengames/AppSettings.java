@@ -37,7 +37,7 @@ public class AppSettings {
 
 	public static void resetBaseDir(Context ctx)
 	{
-		belokoBaseDir  =  Environment.getExternalStorageDirectory().toString() + "/Beloko";
+		belokoBaseDir  =  Environment.getExternalStorageDirectory().toString() + "/GZDoom";
 		setStringOption(ctx, "base_path", belokoBaseDir);
 	}
 	
@@ -93,47 +93,26 @@ public class AppSettings {
 
 	public static String getGameDir()
 	{
-		return  AppSettings.belokoBaseDir + "/" + game;
+		return  AppSettings.belokoBaseDir;
 	}
 
-	public static String getQuakeDemoDir()
+	public static String getIWADDir()
 	{
-		String quakeFilesDir = AppSettings.belokoBaseDir + "/" + game;
-		return  quakeFilesDir + "/DEMO";
+		String quakeFilesDir = AppSettings.belokoBaseDir;
+		return quakeFilesDir + "/iwad";
 	}
 
 	public static String getQuakeFullDir()
 	{
-		String quakeFilesDir = AppSettings.belokoBaseDir + "/" + game;
-		return quakeFilesDir + "/FULL";
+		String quakeFilesDir = AppSettings.belokoBaseDir;
+		return quakeFilesDir + "/config";
 	}
 
 	public static void createDirectories(Context ctx)
 	{
 		boolean scan = false;
 
-		if (!new File(getQuakeDemoDir()).exists())
-			scan = true;
-
-		new File(getQuakeDemoDir()).mkdirs();
-
-
 		String d = "";
-		if (game == GD.IDGame.Quake)
-			d = "/id1/";
-		else if (game == GD.IDGame.Quake2)
-			d = "/baseq2/";
-		else if (game == GD.IDGame.Quake3)
-			d = "/baseq3/";
-		else if (game ==  GD.IDGame.Hexen2)
-			d = "/data1/";
-		else if (game ==  GD.IDGame.RTCW)
-			d = "/main/";
-		else if (game ==  GD.IDGame.JK2)
-			d = "/base/";
-		else if (game ==  GD.IDGame.JK3)
-			d = "/base/";
-
 		if (!new File(getQuakeFullDir() + d).exists())
 			scan = true;
 
@@ -142,16 +121,7 @@ public class AppSettings {
 		//This is totally stupid, need to do this so folder shows up in explorer!
 		if (scan) 
 		{
-			File f = new File(getQuakeDemoDir() , "temp_");
-			try {
-				f.createNewFile();
-				new SingleMediaScanner(ctx, false,  f.getAbsolutePath());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			f = new File(getQuakeFullDir() + d , "temp_");
+			File f = new File(getQuakeFullDir() + d , "temp_");
 			try {
 				f.createNewFile();
 				new SingleMediaScanner(ctx, false,  f.getAbsolutePath());
@@ -162,7 +132,6 @@ public class AppSettings {
 		}
 		else
 		{
-			new File(getQuakeDemoDir() , "temp_").delete();
 			new File(getQuakeFullDir() + d , "temp_").delete();
 		}
 

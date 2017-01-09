@@ -38,8 +38,6 @@ public class OptionsFragment extends Fragment{
 	String LOG = "OptionsFragment";
 
 	TextView basePathTextView;
-	TextView musicPathTextView;
-	TextView fpsTextView;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -53,38 +51,9 @@ public class OptionsFragment extends Fragment{
 			Bundle savedInstanceState) {
 		View mainView = inflater.inflate(R.layout.fragment_options, null);
 
-		LinearLayout quakeExtra =  (LinearLayout)mainView.findViewById(R.id.quake_extra_layout);
-
-		if ((AppSettings.game == IDGame.Doom) || (AppSettings.game == IDGame.Quake3)|| (AppSettings.game == IDGame.RTCW)
-				|| (AppSettings.game == IDGame.Wolf3d)|| (AppSettings.game == IDGame.JK2)|| (AppSettings.game == IDGame.JK3)
-				|| (AppSettings.game == IDGame.Hexen)|| (AppSettings.game == IDGame.Strife)|| (AppSettings.game == IDGame.Heretic)) //If doom, hide the music and other options, now alos Q3!
-			quakeExtra.setVisibility(View.GONE);
-
-		//Immersion mode for KitKat or above
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-			LinearLayout l =  (LinearLayout)mainView.findViewById(R.id.immersion_mode_layout);
-			l.setVisibility(View.VISIBLE);
-
-			CheckBox cb = (CheckBox)mainView.findViewById(R.id.immersion_mode_checkbox);
-			cb.setChecked(AppSettings.immersionMode);
-
-			cb.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-				@Override
-				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-					AppSettings.immersionMode = isChecked;
-					AppSettings.setBoolOption(getActivity(), "immersion_mode", AppSettings.immersionMode);
-				}
-			});
-		}
-
-
 		basePathTextView = (TextView)mainView.findViewById(R.id.base_path_textview);
-		musicPathTextView = (TextView)mainView.findViewById(R.id.music_path_textview);
-		fpsTextView  = (TextView)mainView.findViewById(R.id.fps_textview);
 
 		basePathTextView.setText(AppSettings.belokoBaseDir);
-		musicPathTextView.setText(AppSettings.musicBaseDir);
 
 		Button chooseDir = (Button)mainView.findViewById(R.id.choose_base_button);
 		chooseDir.setOnClickListener(new OnClickListener() {
@@ -168,176 +137,8 @@ public class OptionsFragment extends Fragment{
 			sdcardDir.setVisibility(View.GONE);
 		}
 
-
-		Button chooseMusicDir = (Button)mainView.findViewById(R.id.choose_music_button);
-		chooseMusicDir.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				DirectoryChooserDialog directoryChooserDialog = 
-						new DirectoryChooserDialog(getActivity(), 
-								new DirectoryChooserDialog.ChosenDirectoryListener() 
-						{
-							@Override
-							public void onChosenDir(String chosenDir) 
-							{
-								updateMusicDir(chosenDir);
-							}
-						}); 
-
-				directoryChooserDialog.chooseDirectory(AppSettings.musicBaseDir);
-			}
-		});
-
-		CheckBox vibrate = (CheckBox)mainView.findViewById(R.id.enable_vibrate_checkbox);
-		vibrate.setChecked(AppSettings.vibrate);
-
-		vibrate.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				AppSettings.vibrate = isChecked;
-				AppSettings.setBoolOption(getActivity(), "vibrate", AppSettings.vibrate);
-			}
-		});
-
-		SeekBar sb = (SeekBar)mainView.findViewById(R.id.fps_seekBar);
-		sb.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-
-			@Override
-			public void onStopTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void onStartTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void onProgressChanged(SeekBar seekBar, int progress,
-					boolean fromUser) {
-				AppSettings.setIntOption(getActivity(), "max_fps", progress);
-				updateFPS();
-			}
-		});
-		sb.setProgress(AppSettings.getIntOption(getActivity(), "max_fps", 0));
-		updateFPS();
-
-		if (AppSettings.game == IDGame.Quake2)
-		{
-			LinearLayout quake2Extra =  (LinearLayout)mainView.findViewById(R.id.quake2_extra_layout);
-			quake2Extra.setVisibility(View.VISIBLE);
-			Spinner spinner = (Spinner) mainView.findViewById(R.id.quake2_hud_size_spinner);
-			spinner.setSelection(AppSettings.getIntOption(getActivity(), "quake2_hud_size", 0));
-
-			spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-				@Override
-				public void onItemSelected(AdapterView<?> arg0, View arg1,
-						int pos, long arg3) {
-					AppSettings.setIntOption(getActivity(), "quake2_hud_size", pos);
-				}
-
-				@Override
-				public void onNothingSelected(AdapterView<?> arg0) {
-					// TODO Auto-generated method stub
-
-				}
-			});
-		}
-
-		LinearLayout eglExtra =  (LinearLayout)mainView.findViewById(R.id.choose_egl_layout);
-		if ((AppSettings.game == IDGame.RTCW) || (AppSettings.game == IDGame.JK2))
-		{
-			eglExtra.setVisibility(View.VISIBLE);
-		}
-
-
-		Button saveLogcat = (Button)mainView.findViewById(R.id.save_logcat_button);
-		saveLogcat.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-
-				new SimpleServerAccess(getActivity(),"http://beloko.com/quake_api/check_ver.php?pkg=" + getActivity().getPackageName())
-				{
-					void returnData(ByteArrayOutputStream data)
-					{
-						String ver = data.toString();
-						int ver_int = 0;
-						try{
-							ver_int = Integer.parseInt(ver);
-						}
-						catch (Exception e){
-
-						}
-						if (GD.version < ver_int)
-						{
-							AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
-							builder.setMessage("Please first update app from Amazon to access support")
-							.setCancelable(true)
-							.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog, int id) {
-
-								}
-							});
-
-							builder.show();
-						}
-						else
-						{
-							SendDebugEmail();
-						}
-					}
-				};
-			}
-		});
 		return mainView;
 	}
-
-	@Override
-	public void onHiddenChanged(boolean hidden) {
-		updateEGLSpinner();
-		super.onHiddenChanged(hidden);
-	}
-
-	private void updateEGLSpinner()
-	{
-
-		if (getView() == null)
-			return;
-
-		String eglOptions = AppSettings.getStringOption(getActivity(), "egl_configs", "Please launch game to populate");
-		String[] items = eglOptions.split(",");
-
-		int number = items.length;
-		Spinner eglSpinnter = (Spinner)getView().findViewById(R.id.choose_egl_spinner);
-		eglSpinnter.setAdapter(new ArrayAdapter<String> (getActivity(),android.R.layout.simple_dropdown_item_1line,items));
-
-		int override = AppSettings.getIntOption(getActivity(), "egl_config_selected", 0);
-		if (override < number)
-			eglSpinnter.setSelection(override);
-
-
-		eglSpinnter.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-			@Override
-			public void onItemSelected(AdapterView<?> arg0, View arg1,
-					int pos, long arg3) {
-				AppSettings.setIntOption(getActivity(), "egl_config_selected", pos);
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-	}
-
 
 	private void updateBaseDir(String dir)
 	{
@@ -384,32 +185,6 @@ public class OptionsFragment extends Fragment{
 		AppSettings.createDirectories(getActivity());
 
 		basePathTextView.setText(AppSettings.belokoBaseDir);
-	}
-
-	private void updateMusicDir(String dir)
-	{
-		File fdir = new File(dir);
-
-		if (!fdir.isDirectory())
-		{
-			showError(dir + " is not a directory");
-			return;
-		}
-
-
-		AppSettings.musicBaseDir = dir;
-		AppSettings.setStringOption(getActivity(), "music_path", AppSettings.musicBaseDir);
-		musicPathTextView.setText(AppSettings.musicBaseDir);
-		CDAudioPlayer.initFiles(AppSettings.musicBaseDir);
-	}
-
-	private void updateFPS()
-	{
-		int fps = AppSettings.getIntOption(getActivity(), "max_fps", 0);
-		if (fps == 0)
-			fpsTextView.setText("No Limit");
-		else
-			fpsTextView.setText(fps + " FPS");
 	}
 
 	private void showError(String error)
