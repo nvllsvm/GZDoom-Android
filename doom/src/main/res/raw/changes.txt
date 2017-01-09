@@ -1,0 +1,147 @@
+v4.1.1
+*Fixed saving settings in Chocolate Doom.
+----
+v4.1
+*First Amazon release
+*Updated to Chocolate Doom 2.2.0
+*Updated FMOD, fixes DoomMetal for Android L
+----
+v4.0.4
+*Fixed hang on exit on GZDoom 
+*Fixed memory leak issue on GZDoom 
+*Fixed 'burn' crossfade on GZDoom
+*Let mouse work on launch screen for Nvidia Shield 
+----
+v4.0.3
+*Fixed crash on mods again for some (sorry hopefully this time)
+----
+v4.0.2
+*Fixed serious bug which made some MODs crash in Android (5.x) Lollipop.
+*Fixed so phones lock screen won't kill app (probably!)
+----
+v4.0.1
+*Fixed bug in touch control position on some devices.
+----
+v4.0
+*Added (optional) latest GZDoom development build (2.1pre) for latest ZDoom code, uses old renderer.
+*Added option to divide resolution of GZDoom, can help with performance
+*Added icons for other games supported by GZdoom, games not officially supported in app but they should run
+*Supports deh/bex files in MOD selector
+*Download and use fluidsynth for GZdoom music (sounds awesome!)
+*Fluidsynth also fixed for PrBoom
+*Multiplayer for GZDoom works (Will make a launcher next release)
+*Fixed bots, put your bots.cfg file in "Doom/FULL/zcajun/bots.cfg"
+----
+v3.3.1
+*Fix armour bug in GZDoom
+----
+v3.3
+*Downloads FreeDoom instead of Doom demo
+*Fix for those with Lucky Patcher
+*Bug fix which caused crash on startup
+----
+v3.2.1
+*Fixed quick load for PrBoom
+*Fixed PrBoom Wad loading when loading multiple wads 
+----
+v3.2
+*Fixed fog effect
+*Can now load deh files through wad selector
+*Fixed screen screen wipe effect (Burn does not work yet)
+*Added Wad/Mod selection button to Chocolate Doom
+*Allow Long press on folders in Wad/Mod selection to add folder
+*Fixed delete key (finally)
+*Allow blank savegame name in Gzdoom
+*Added quick save/load to gamepad buttons
+---
+v3.1
+*Updated to GZDoom v1.8.6
+*Added 6 custom buttons (A-F) for touch and gamepad
+*Fixed major rendering bug which broke additive blending in mods (thanks Sinael)
+*Set sound samplerate to that of device (delete "FULL/gzdoom" folder to reset)
+*Updated Weapon Wheel with awesome new graphic  (thanks Ivan M)
+*Added missing actions to Gamepad
+*Fix bug which made some mods crash
+*Fixed gamepad menu control for all engines
+*Fixed angle/pitch issue again (thanks Sinael)
+*Improved offline license
+*Bug fixes
+----
+v3.0.3
+*Added new wad/mod selection to PrBoom
+*Fixed bug which stop player continuing game from text intermission
+*Saves last engine and IWAD used for next time
+*Fixed Chocolate Doom F10 key for Multiplayer
+*Fixed angle/pitch bug for mods (made player face random direction)
+----
+v3.0.1/2
+*Fix PrBoom/Choc crash
+*Fix sound settings - Change sample_rate/buffer_count in FMOD options if you have sound issues
+*Fix WADs screen size bug on some devices
+----
+v3.0
+*Added GZDoom engine (Beta)
+*All new touch screen icons, thanks Ivan M, www.theblackd.com
+*Added gamepad menu control
+*Fixed occasional crash when exiting game
+*Updated all widgets to Holo theme
+*New easier way to add/remove buttons
+*All new MOD/WAD selection system (GZDoom only, will be added to the others)
+*Bug fixes
+----
+v2.1
+*Added immersion mode for KitKat
+----
+v2.0.1
+*Fixed keyboard in Chocolate Doom MP
+*Fixed numbers for Chocolate Doom cheats
+----
+v2.0
+*Added Chocolate Doom engine. Allows LAN multiplayer, and classic Doom experience.
+*Added Weapon Wheel
+*Show keyboard in main menu (edit save game names)
+*Bug fixes
+----
+v1.4.1
+*Added missing look invert for touch screen
+*Bug fix stop crash when starting game sometimes
+----
+v1.4
+*Optional alternative touch graphics by Ilia
+*Now can configure weapons and map touch on screen controls
+*Now have sub folders in the 'wads' folder. These can contain multiple wads and deh files to be loaded
+*Fixed strafe left/right gamepad buttons
+----
+v1.3.4
+*Added option to change audio buffer size (see Help tab) (help if stuttering)
+----
+v1.3.3
+*Bugfix to add vertical look for gamepads
+*Send debug logs option
+----
+v1.3.2
+*Added Mouselook option (In game Options->General->Enable Mouselook = Yes)
+*Bugfix in license
+----
+v1.3.1
+*Bug fix to stop crash at launch for some people.
+----
+v1.3
+*Added option for better sounding Music (See new HELP tab) [Beta]
+*Added official support for MOGA Pocket and MOGA Pro
+*Fixed serious ceiling/floor brightness issue - should look much better now!
+*Added offline License option. Contact support@beloko.com for more info.
+----
+v1.2.1
+*Bug fix introduced below which made Open GL mode crash on some devices
+----
+v1.2
+*Added option to change Base directoy (move wads)
+*Added new button to easily select custom wads (new levels etc)
+----
+v1.1
+*Added game name to save game text
+*Fixed "Hide Touch Controls" when using a Gamepad
+*Stop music when app sent to background
+----
+v1.0 Initial Released

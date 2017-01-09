@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">idtech</string>
+
+    <string-array name="double_tap_actions">
+        <item>None</item>
+        <item>Shoot</item>
+        <item>Jump</item>
+        <item>Use</item>
+    </string-array>
+    <string-array name="double_tap_actions_jk">
+        <item>None</item>
+        <item>Shoot</item>
+        <item>Jump</item>
+        <item>Use</item>
+        <item>Use Force</item>
+    </string-array>
+    <string-array name="quake2_hud_size">
+        <item>Large</item>
+        <item>Medium</item>
+        <item>Small</item>
+    </string-array>
+
+    <string name="title_activity_cloud_save">CloudSaveActivity</string>
+    <string name="title_activity_google_play_services">GooglePlayServicesActivity</string>
+
+</resources>

@@ -1,0 +1,7 @@
+
+If bullet flashes of guns on brutal doom, its something to do with the gzdoom.pk3 file. Pre built version seemed to work (Had the old version in there actually)
+
+Strange white lines on GZdoom brutal doom doom2 first level, have to:
+gl_interface.cpp
+glDisable(GL_CLIP_PLANE0);
+glEnable(GL_CLIP_PLANE0);

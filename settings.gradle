@@ -1,0 +1,4 @@
+include ':opengames', ':doom'
+
+include ':touchcontrols'
+project(':touchcontrols').projectDir = new File(settingsDir,"/TouchControls/touchcontrols")

@@ -1,0 +1,40 @@
+ACTOR SkyViewpoint 9080 native 
+{
+	+NOSECTOR
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+DONTSPLASH
+}
+
+ACTOR SkyPicker 9081 native 
+{
+	+NOSECTOR
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+DONTSPLASH
+}
+
+Actor SkyCamCompat : SkyViewpoint 9083 native
+{
+}
+
+ACTOR StackPoint : SkyViewpoint native 
+{
+}
+
+ACTOR UpperStackLookOnly : StackPoint 9077
+{
+}
+
+ACTOR LowerStackLookOnly : StackPoint 9078
+{
+}
+
+
+ACTOR SectorSilencer 9082 native 
+{
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+DONTSPLASH
+	RenderStyle None
+}

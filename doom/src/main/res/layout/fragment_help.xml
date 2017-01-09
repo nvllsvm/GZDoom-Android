@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Music Improvement (PrBoom)"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="By default the OPL2 midi player is used for music playback. This give the best performance, but not the best music sound\n
+You can instead try the Timidity Midi player which sounds better. In order for this to work the Sound Fonts need to be downloaded. Make sure you have at least 70MB free." />
+
+        <Button
+            android:id="@+id/download_fonts_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Download Sound Fonts" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Now launch the game and enable the SDL Midi Player:\n
+OPTIONS -> GENERAL -> PREFERRED MIDI PLAYER -> SDL\n
+Then restart the Game." />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/holo_blue" >
+        </View>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mouse Look (vertical look) (PrBoom)"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="By default mouse look is disabled - this is how Doom was originaly designed and meant to be played!\n
+However you can enabled mouse look if you wish in game:\n
+Options -> General -> (3rd page) Enable Mouselook\n
+Press Enter twice to change the value." />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/holo_blue" >
+        </View>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Audio Buffer (PrBoom)"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="If you are having issue with the sound (stuttering, lagging), you can try different buffer settings.\n
+Lower values should decreace lag, but may increase stuttering.\n
+The default is 1024 and is usuall OK for most devices." />
+
+        <EditText
+            android:id="@+id/sound_buff_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number" >
+        </EditText>
+    </LinearLayout>
+
+</ScrollView>

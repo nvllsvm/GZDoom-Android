@@ -1,0 +1,19 @@
+Use this Tab to enable and configure your Gamepad OR Keyboard.
+
+1. Enable the Game Pad check box.
+2. Hide Touch Controls if needed.
+3. Press on an Action to configure.
+4. Move or Press the Gamepad button.
+
+Long press on an analog Action to set the sensitivity and invert.
+
+The Actions with a joystick icon are for analog inputs ONLY. The other Actions can be set with gamepad buttons OR analog inputs.
+
+Press the Back Button to cancel and clear an Action
+
+MOGA Pocket:
+Ensure your MOGA Pocket device is first connected via bluetooth to your Android device.
+
+MOGA Pro:
+You can set your game pad to A OR B mode, ensure it is first connected via bluetooth.
+ 
