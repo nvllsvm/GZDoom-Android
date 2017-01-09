@@ -10,12 +10,6 @@
         android:minWidth="500dp"
         android:orientation="vertical" >
 
-        <CheckBox
-            android:id="@+id/use_gzdoom_dev_checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Use development build (2.1pre) [WARNING! may be unstable]" />
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"

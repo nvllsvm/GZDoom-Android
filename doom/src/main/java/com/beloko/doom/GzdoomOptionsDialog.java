@@ -34,7 +34,6 @@ public class GzdoomOptionsDialog {
 
 	final Dialog dialog;
 	Activity activity;
-	CheckBox useDevCheckBox;
 
 
 	GzdoomOptionsDialog(final Activity act,String path, boolean prboomMode)
@@ -52,17 +51,6 @@ public class GzdoomOptionsDialog {
 			@Override
 			public void onDismiss(DialogInterface dialog) {
 				resultResult();
-			}
-		});
-
-		useDevCheckBox = (CheckBox)dialog.findViewById(R.id.use_gzdoom_dev_checkBox);
-		boolean dev = AppSettings.getBoolOption(act, "gzdoom_dev", false);
-		useDevCheckBox.setChecked(dev);
-		useDevCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				AppSettings.setBoolOption(act, "gzdoom_dev", isChecked);
 			}
 		});
 

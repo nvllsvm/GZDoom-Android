@@ -13,7 +13,6 @@ import android.view.MotionEvent;
 import com.beloko.opengames.AboutDialog;
 import com.beloko.opengames.AppSettings;
 import com.beloko.opengames.GD;
-import com.beloko.opengames.IntroDialog;
 import com.beloko.opengames.OnlineFragment;
 import com.beloko.opengames.OptionsFragment;
 import com.beloko.opengames.Utils;
@@ -57,13 +56,9 @@ public class EntryActivity extends FragmentActivity  {
 		GamePadFragment.gamepadActions = Utils.getGameGamepadConfig(AppSettings.game);
 
 		actionBar.addTab(actionBar.newTab().setText("Gzdoom").setTabListener(new TabListener<LaunchFragmentGZdoom>(this, "Gzdoom", LaunchFragmentGZdoom.class)));
-		actionBar.addTab(actionBar.newTab().setText("prboom").setTabListener(new TabListener<LaunchFragment>(this, "prboom", LaunchFragment.class)));
-		actionBar.addTab(actionBar.newTab().setText("Choc").setTabListener(new TabListener<LaunchFragmentChoc>(this, "Choc", LaunchFragmentChoc.class)));
 		actionBar.addTab(actionBar.newTab().setText("gamepad").setTabListener(new TabListener<GamePadFragment>(this, "gamepad", GamePadFragment.class)));
 		actionBar.addTab(actionBar.newTab().setText("options").setTabListener(new TabListener<OptionsFragment>(this, "options", OptionsFragment.class)));
 		//actionBar.addTab(actionBar.newTab().setText("help").setTabListener(new TabListener<HelpFragment>(this, "help", HelpFragment.class)));
-		actionBar.addTab(actionBar.newTab().setText("social").setTabListener(new TabListener<OnlineFragment>(this, "social", OnlineFragment.class)));
-		//actionBar.addTab(actionBar.newTab().setText("Cloud Save").setTabListener(new TabListener<CloudSaveFragment>(this, "cloud_save", CloudSaveFragment.class)));
 
 		
 		String last_tab = AppSettings.getStringOption(getApplicationContext(), "last_tab", "");
@@ -75,16 +70,6 @@ public class EntryActivity extends FragmentActivity  {
 			actionBar.setSelectedNavigationItem(2);
 
 		gamePadFrag = (GamePadFragment)getFragmentManager().findFragmentByTag("gamepad");
-
-		if (IntroDialog.showIntro(this))
-		{
-			IntroDialog.show(this,"Doom Touch",R.raw.intro);
-		}
-		else
-		{
-			if (AboutDialog.showAbout(this))
-				AboutDialog.show(this,R.raw.changes,R.raw.about);
-		}
 
 	}
 

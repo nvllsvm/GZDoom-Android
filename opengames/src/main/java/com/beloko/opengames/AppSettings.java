@@ -66,7 +66,7 @@ public class AppSettings {
 
 		vibrate =  getBoolOption(ctx, "vibrate", true);
 
-		immersionMode = getBoolOption(ctx, "immersion_mode", false);
+		immersionMode = getBoolOption(ctx, "immersion_mode", true);
 		
 
 		rid = getLongOption(ctx, "rid", 0);

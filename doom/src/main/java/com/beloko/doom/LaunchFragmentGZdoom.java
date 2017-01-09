@@ -118,7 +118,7 @@ public class LaunchFragmentGZdoom extends Fragment{
 				new GzdoomOptionsDialog(getActivity(), fullBaseDir,false){
 					public void resultResult() 
 					{
-						boolean dev = AppSettings.getBoolOption(getActivity(), "gzdoom_dev", false);
+						boolean dev = AppSettings.getBoolOption(getActivity(), "gzdoom_dev", true);
 						setDev(dev);	
 					}
 					
@@ -131,66 +131,6 @@ public class LaunchFragmentGZdoom extends Fragment{
 			}
 		});
 		
-		Button startdemo = (Button)mainView.findViewById(R.id.start_demo);
-		startdemo.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-
-				final Dialog dialog = new Dialog(getActivity());
-				dialog.setContentView(R.layout.freedoom_dialog_view);
-				dialog.setTitle("Select Freedoom episode");
-				dialog.setCancelable(true);
-				
-				Button credit = (Button) dialog.findViewById(R.id.freedoom_credits);
-				credit.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						AboutDialog.show(getActivity(), R.raw.changes, R.raw.about);
-					}
-				});
-						
-						
-				Button button = (Button) dialog.findViewById(R.id.freedoom1_button);
-				button.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						if (Utils.checkFiles(demoBaseDir,new String[] {"freedoom1.wad"}) != null)
-						{
-							Utils.showDownloadDialog(getActivity(), "Download Freedoom Phase 1? (8MB)", 
-									"", demoBaseDir, "freedoom1.zip");
-						}
-						else
-						{
-							selectGame(-1);
-							startGame(demoBaseDir,false," -iwad freedoom1.wad");
-						}
-					}
-				});
-				
-
-				Button button2 = (Button) dialog.findViewById(R.id.freedoom2_button);
-				button2.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						if (Utils.checkFiles(demoBaseDir,new String[] {"freedoom2.wad"}) != null)
-						{
-							Utils.showDownloadDialog(getActivity(), "Download Freedoom Phase 2? (11MB)", 
-									"", demoBaseDir, "freedoom2.zip");
-						}
-						else
-						{
-							selectGame(-1);
-							startGame(demoBaseDir,false," -iwad freedoom2.wad");
-						}
-					}
-				});
-				
-				dialog.show();
-			
-			}
-		});
-
 		Button startfull = (Button)mainView.findViewById(R.id.start_full);
 		startfull.setOnClickListener(new OnClickListener() {
 
@@ -260,7 +200,7 @@ public class LaunchFragmentGZdoom extends Fragment{
 			}        
 		});
 
-		boolean dev = AppSettings.getBoolOption(getActivity(), "gzdoom_dev", false);
+		boolean dev = AppSettings.getBoolOption(getActivity(), "gzdoom_dev", true);
 		setDev(dev);
 		
 		refreshGames();
