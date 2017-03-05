@@ -17,8 +17,6 @@ import com.beloko.opengames.OnlineFragment;
 import com.beloko.opengames.OptionsFragment;
 import com.beloko.opengames.Utils;
 import com.beloko.touchcontrols.GamePadFragment;
-import com.crashlytics.android.Crashlytics;
-import io.fabric.sdk.android.Fabric;
 
 
 public class EntryActivity extends FragmentActivity  {
@@ -37,8 +35,6 @@ public class EntryActivity extends FragmentActivity  {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Fabric.with(this, new Crashlytics());
-
 		GD.init(this);
 		//Utils.expired();
 

@@ -45,12 +45,9 @@ import com.beloko.touchcontrols.ShowKeyboard;
 import com.beloko.touchcontrols.TouchControlsEditing;
 import com.beloko.touchcontrols.TouchControlsSettings;
 import com.beloko.touchcontrols.TouchSettings;
-import com.crashlytics.android.Crashlytics;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-
-import io.fabric.sdk.android.Fabric;
 
 
 public class Game extends Activity implements Handler.Callback
@@ -83,7 +80,6 @@ public class Game extends Activity implements Handler.Callback
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		Fabric.with(this, new Crashlytics());
 
 		act = this;
 

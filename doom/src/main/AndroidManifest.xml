@@ -60,10 +60,6 @@
             android:screenOrientation="sensorLandscape"
             >
         </activity>
-
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="14c46c420d854b29c65ed8a9053c8fdc655b28c2" />
     </application>
 
     <uses-sdk
