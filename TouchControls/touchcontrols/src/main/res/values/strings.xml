@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Touch Controls</string>
+
+    <string-array name="double_tap_actions">
+        <item>None</item>
+        <item>Shoot</item>
+        <item>Jump</item>
+        <item>Use</item>
+    </string-array>
+</resources>
