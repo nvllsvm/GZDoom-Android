@@ -16,8 +16,8 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Spinner;
 
-import com.beloko.opengames.AboutDialog;
-import com.beloko.opengames.AppSettings;
+import net.nullsum.doom.AboutDialog;
+import net.nullsum.doom.AppSettings;
 
 import java.util.ArrayList;
 import java.util.List;

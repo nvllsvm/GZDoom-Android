@@ -10,12 +10,12 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MotionEvent;
 
-import com.beloko.opengames.AboutDialog;
-import com.beloko.opengames.AppSettings;
-import com.beloko.opengames.GD;
-import com.beloko.opengames.OnlineFragment;
-import com.beloko.opengames.OptionsFragment;
-import com.beloko.opengames.Utils;
+import net.nullsum.doom.AboutDialog;
+import net.nullsum.doom.AppSettings;
+import net.nullsum.doom.GD;
+import net.nullsum.doom.OnlineFragment;
+import net.nullsum.doom.OptionsFragment;
+import net.nullsum.doom.Utils;
 import com.beloko.touchcontrols.GamePadFragment;
 
 

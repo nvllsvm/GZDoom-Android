@@ -23,11 +23,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.beloko.opengames.AboutDialog;
-import com.beloko.opengames.AppSettings;
-import com.beloko.opengames.GD;
-import com.beloko.opengames.ServerAPI;
-import com.beloko.opengames.Utils;
+import net.nullsum.doom.AboutDialog;
+import net.nullsum.doom.AppSettings;
+import net.nullsum.doom.GD;
+import net.nullsum.doom.ServerAPI;
+import net.nullsum.doom.Utils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -293,7 +293,7 @@ public class LaunchFragmentGZdoom extends Fragment{
 		String args =  gameArgsTextView.getText().toString() + " " + argsEditText.getText().toString();
 
 		//Intent intent = new Intent(getActivity(), Game.class);
-		Intent intent = new Intent(getActivity(), com.beloko.opengames.gzdoom.Game.class);
+		Intent intent = new Intent(getActivity(), net.nullsum.doom.gzdoom.Game.class);
 		intent.setAction(Intent.ACTION_MAIN);
 		intent.addCategory(Intent.CATEGORY_LAUNCHER);
 

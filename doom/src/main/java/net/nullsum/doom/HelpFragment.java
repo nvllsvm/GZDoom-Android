@@ -15,8 +15,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.beloko.opengames.AppSettings;
-import com.beloko.opengames.ServerAPI;
+import net.nullsum.doom.AppSettings;
+import net.nullsum.doom.ServerAPI;
 
 public class HelpFragment extends Fragment{
 	String LOG = "HelpFragment";
