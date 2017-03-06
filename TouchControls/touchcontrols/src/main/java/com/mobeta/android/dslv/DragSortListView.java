@@ -2936,7 +2936,7 @@ public class DragSortListView extends ListView {
             // always do scroll
             mBlockLayoutRequests = true;
 
-            setSelectionFromTop(movePos, top - padTop);
+            //setSelectionFromTop(movePos, top - padTop);
             DragSortListView.this.layoutChildren();
             invalidate();
 
