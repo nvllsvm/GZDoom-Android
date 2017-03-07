@@ -27,7 +27,7 @@ extern "C"
 #include "in_android.h"
 #include "SDL_keycode.h"
 
-#define JAVA_FUNC(x) Java_net_nullsum_doom_gzdoom_NativeLib_##x
+#define JAVA_FUNC(x) Java_net_nullsum_doom_NativeLib_##x
 
 int android_screen_width;
 int android_screen_height;
@@ -166,7 +166,7 @@ void swapBuffers()
 {
 	if (NativeLibClass == 0)
 	{
-		NativeLibClass = env_->FindClass("net/nullsum/doom/gzdoom/NativeLib");
+		NativeLibClass = env_->FindClass("net/nullsum/doom/NativeLib");
 		swapBuffersMethod = env_->GetStaticMethodID(NativeLibClass, "swapBuffers", "()V");
 	}
 	env_->CallStaticVoidMethod(NativeLibClass, swapBuffersMethod);

@@ -16,7 +16,7 @@ public class SingleMediaScanner implements MediaScannerConnectionClient {
 	private boolean path;
 	
 	public SingleMediaScanner(Context context,boolean path, String f) {
-		if (net.nullsum.doom.GD.DEBUG) Log.d("SingleMediaScanner","path = " + path + ", f = " + f);
+		Log.d("SingleMediaScanner","path = " + path + ", f = " + f);
 		mFile = f;
 		mMs = new MediaScannerConnection(context, this);
 		mMs.connect();

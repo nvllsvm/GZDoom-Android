@@ -26,8 +26,6 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import net.nullsum.doom.GD.IDGame;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileWriter;
@@ -202,57 +200,5 @@ public class OptionsFragment extends Fragment{
 
 		final AlertDialog errdialog = dialogBuilder.create();
 		errdialog.show();
-	}
-
-	private void SendDebugEmail()
-	{
-		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-		builder.setMessage("Are you sure you want to email the debug log?\nIf yes, please give good information about the problem.\nPLEASE DO NOT send a log if the app was not downloaded from Amazon.")
-		.setCancelable(true)
-		.setPositiveButton("SEND EMAIL", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
-				// TODO Auto-generated method stub
-				PrintWriter printWriter = null;
-				try {
-					String filename = AppSettings.getBaseDir() + "/" +  AppSettings.game.toString() + "_logcat.txt";
-					printWriter = new PrintWriter(new FileWriter(filename),true);
-
-					String log = Utils.getLogCat();
-
-					printWriter.print(log);
-
-					printWriter.close();
-
-
-					final Intent emailIntent = new Intent( android.content.Intent.ACTION_SEND);
-					emailIntent.setType("plain/text");
-
-					emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, AppSettings.game.toString() + "_" + GD.version + " Logging file");
-					emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,new String[]{"support@beloko.com"});
-
-					emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,"Enter description of issue:  ");
-
-					Uri uri = Uri.parse("file://" + filename);
-					emailIntent.putExtra(Intent.EXTRA_STREAM, uri);
-
-					getActivity().startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-			}
-		});
-		builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.cancel();
-			}
-		});                                                   
-		AlertDialog alert = builder.create();
-		alert.show(); 
-
 	}
 }

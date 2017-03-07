@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.nullsum.doom.gzdoom;
+package net.nullsum.doom;
 
 import android.app.Activity;
 import android.content.Context;
@@ -36,7 +36,6 @@ import net.nullsum.doom.AppSettings;
 import net.nullsum.doom.BestEglChooser;
 import net.nullsum.doom.CDAudioPlayer;
 import net.nullsum.doom.FPSLimit;
-import net.nullsum.doom.GD;
 import net.nullsum.doom.MyGLSurfaceView;
 import net.nullsum.doom.Utils;
 import com.beloko.touchcontrols.ControlInterpreter;
@@ -73,8 +72,6 @@ public class Game extends Activity implements Handler.Callback
 
 	int resDiv = 1;
 
-	boolean useDev = false;
-	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -85,15 +82,12 @@ public class Game extends Activity implements Handler.Callback
 
 		handlerUI = new Handler(this);
 
-		AppSettings.setGame(GD.IDGame.valueOf(getIntent().getStringExtra("game")));
-
 		AppSettings.reloadSettings(getApplication());
 
 		args = getIntent().getStringExtra("args");
 		gamePath  = getIntent().getStringExtra("game_path");
 		setupLaunch = getIntent().getBooleanExtra("setup_launch", false);
 		resDiv = getIntent().getIntExtra("res_div", 1);
-		useDev =  getIntent().getBooleanExtra("use_dev", false);
 		
 		mogaController = Controller.getInstance(this);
 		MogaHack.init(mogaController, this);
@@ -123,12 +117,12 @@ public class Game extends Activity implements Handler.Callback
 
 	public void start_game() {
 
-		NativeLib.loadLibraries(useDev);
+		NativeLib.loadLibraries();
 
 		NativeLib engine = new NativeLib();
 
 
-		controlInterp = new ControlInterpreter(engine,Utils.getGameGamepadConfig(AppSettings.game), TouchSettings.gamePadControlsFile, TouchSettings.gamePadEnabled);
+		controlInterp = new ControlInterpreter(engine,Utils.getGameGamepadConfig(), TouchSettings.gamePadControlsFile, TouchSettings.gamePadEnabled);
 
 		TouchControlsSettings.setup(act, engine);
 		TouchControlsSettings.loadSettings(act);

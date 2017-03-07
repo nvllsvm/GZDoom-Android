@@ -1,4 +1,4 @@
-package net.nullsum.doom.gzdoom;
+package net.nullsum.doom;
 
 import android.util.Log;
 import android.view.KeyEvent;
@@ -9,7 +9,7 @@ import com.beloko.touchcontrols.ControlInterface;
 
 public class NativeLib implements ControlInterface {
 
-	public static void loadLibraries(boolean useDev)
+	public static void loadLibraries()
 	{
 
 		try {
@@ -23,10 +23,7 @@ public class NativeLib implements ControlInterface {
 			System.loadLibrary("fmod");
 			System.loadLibrary("openal");
 			//System.loadLibrary("output_sdl");
-			if (useDev)
-				System.loadLibrary("gzdoom_dev");
-			else
-				System.loadLibrary("gzdoom");
+            System.loadLibrary("gzdoom_dev");
 
 		}
 		catch (UnsatisfiedLinkError ule) {

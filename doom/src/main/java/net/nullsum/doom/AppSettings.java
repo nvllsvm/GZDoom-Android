@@ -13,234 +13,158 @@ import java.util.Random;
 
 public class AppSettings {
 
-	public static GD.IDGame game;
+    public static String belokoBaseDir;
 
-	public static String belokoBaseDir;
+    public static String musicBaseDir;
 
-	public static String musicBaseDir;
+    public static String graphicsDir = "";
 
-	public static String graphicsDir = "";
+    public static boolean vibrate;
+    public static boolean immersionMode;
 
-	public static boolean vibrate;
-	public static boolean immersionMode;
+    public static Context ctx;
 
-	public static long rid = 0x12345678abcdef12l;
+    public static void resetBaseDir(Context ctx)
+    {
+        belokoBaseDir  =  Environment.getExternalStorageDirectory().toString() + "/GZDoom";
+        setStringOption(ctx, "base_path", belokoBaseDir);
+    }
 
-	public static int rnlvl = 0;
-	
-	public static void setGame(GD.IDGame g)
-	{
-		game = g;
-	}
+    public static void reloadSettings(Context ctx)
+    {
+        AppSettings.ctx = ctx;
 
-	public static Context ctx;
+        TouchSettings.reloadSettings(ctx);
 
-	public static void resetBaseDir(Context ctx)
-	{
-		belokoBaseDir  =  Environment.getExternalStorageDirectory().toString() + "/GZDoom";
-		setStringOption(ctx, "base_path", belokoBaseDir);
-	}
-	
-	public static void reloadSettings(Context ctx)
-	{
-		AppSettings.ctx = ctx;
+        belokoBaseDir = getStringOption(ctx, "base_path", null);
+        if (belokoBaseDir == null)
+        {
+            resetBaseDir(ctx);
+        }
 
-		TouchSettings.reloadSettings(ctx);
+        String music = getStringOption(ctx, "music_path", null);
+        if (music == null)
+        {
+            music  =  belokoBaseDir + "/doom/Music";
+            setStringOption(ctx, "music_path", music);
+        }
 
-		belokoBaseDir = getStringOption(ctx, "base_path", null);
-		if (belokoBaseDir == null)
-		{
-			resetBaseDir(ctx);
-		}
+        musicBaseDir =  music;
 
-		String music = getStringOption(ctx, "music_path", null);
-		if (music == null)
-		{
-			music  =  belokoBaseDir + "/" + game + "/Music";
-			setStringOption(ctx, "music_path", music);
-		}
+        graphicsDir = ctx.getFilesDir().toString() + "/";
 
-		musicBaseDir =  music;
+        vibrate =  getBoolOption(ctx, "vibrate", true);
 
-		graphicsDir = ctx.getFilesDir().toString() + "/";
+        immersionMode = getBoolOption(ctx, "immersion_mode", true);
 
-		vibrate =  getBoolOption(ctx, "vibrate", true);
+        net.nullsum.doom.CDAudioPlayer.initFiles(musicBaseDir);
+    }
 
-		immersionMode = getBoolOption(ctx, "immersion_mode", true);
-		
+    public static String getBaseDir()
+    {
+        return  AppSettings.belokoBaseDir;
+    }
 
-		rid = getLongOption(ctx, "rid", 0);
+    public static String getGameDir()
+    {
+        return  AppSettings.belokoBaseDir;
+    }
 
-		if (rid == 0)
-		{
-			Random randomGenerator = new Random();
-			rid = randomGenerator.nextLong();
-			setLongOption(ctx, "rid", rid);
-		}
-		
-		Random randomGenerator = new Random();
-		rnlvl = randomGenerator.nextInt();
-		
-		 
-		net.nullsum.doom.CDAudioPlayer.initFiles(musicBaseDir);
+    public static String getQuakeFullDir()
+    {
+        String quakeFilesDir = AppSettings.belokoBaseDir;
+        return quakeFilesDir + "/config";
+    }
 
-	}
+    public static void createDirectories(Context ctx)
+    {
+        boolean scan = false;
 
-	public static String getBaseDir()
-	{
-		return  AppSettings.belokoBaseDir;
-	}
+        String d = "";
+        if (!new File(getQuakeFullDir() + d).exists())
+            scan = true;
 
-	public static String getGameDir()
-	{
-		return  AppSettings.belokoBaseDir;
-	}
+        new File(getQuakeFullDir() + d).mkdirs();
 
-	public static String getIWADDir()
-	{
-		String quakeFilesDir = AppSettings.belokoBaseDir;
-		return quakeFilesDir + "/iwad";
-	}
+        //This is totally stupid, need to do this so folder shows up in explorer!
+        if (scan)
+        {
+            File f = new File(getQuakeFullDir() + d , "temp_");
+            try {
+                f.createNewFile();
+                new SingleMediaScanner(ctx, false,  f.getAbsolutePath());
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            new File(getQuakeFullDir() + d , "temp_").delete();
+        }
+    }
 
-	public static String getQuakeFullDir()
-	{
-		String quakeFilesDir = AppSettings.belokoBaseDir;
-		return quakeFilesDir + "/config";
-	}
+    public static void setFloatOption(Context ctx,String name, float value)
+    {
+        SharedPreferences settings = ctx.getSharedPreferences("OPTIONS",    Context.MODE_MULTI_PROCESS);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putFloat(name, value);
+        editor.apply();
+    }
 
-	public static void createDirectories(Context ctx)
-	{
-		boolean scan = false;
+    public static boolean getBoolOption(Context ctx,String name, boolean def)
+    {
+        SharedPreferences settings = ctx.getSharedPreferences("OPTIONS",    Context.MODE_MULTI_PROCESS);
+        return settings.getBoolean(name, def);
+    }
 
-		String d = "";
-		if (!new File(getQuakeFullDir() + d).exists())
-			scan = true;
+    public static void setBoolOption(Context ctx,String name, boolean value)
+    {
+        SharedPreferences settings = ctx.getSharedPreferences("OPTIONS",    Context.MODE_MULTI_PROCESS);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean(name, value);
+        editor.apply();
+    }
 
-		new File(getQuakeFullDir() + d).mkdirs();
+    public static int getIntOption(Context ctx,String name, int def)
+    {
+        SharedPreferences settings = ctx.getSharedPreferences("OPTIONS",    Context.MODE_MULTI_PROCESS);
+        return settings.getInt(name, def);
+    }
 
-		//This is totally stupid, need to do this so folder shows up in explorer!
-		if (scan) 
-		{
-			File f = new File(getQuakeFullDir() + d , "temp_");
-			try {
-				f.createNewFile();
-				new SingleMediaScanner(ctx, false,  f.getAbsolutePath());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		else
-		{
-			new File(getQuakeFullDir() + d , "temp_").delete();
-		}
+    public static void setIntOption(Context ctx,String name, int value)
+    {
+        SharedPreferences settings = ctx.getSharedPreferences("OPTIONS",    Context.MODE_MULTI_PROCESS);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt(name, value);
+        editor.apply();
+    }
 
+    public static long getLongOption(Context ctx,String name, long def)
+    {
+        SharedPreferences settings = ctx.getSharedPreferences("OPTIONS",    Context.MODE_MULTI_PROCESS);
+        return settings.getLong(name, def);
+    }
 
+    public static void setLongOption(Context ctx,String name, long value)
+    {
+        SharedPreferences settings = ctx.getSharedPreferences("OPTIONS",    Context.MODE_MULTI_PROCESS);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putLong(name, value);
+        editor.apply();
+    }
 
-		/*//Crashes on kitkat 4.4!!
-		if (scan)
-		{
-			Log.d("AppSettings","Doing media scan");
-			ctx.sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + getBaseDir())));
-		}
-		 */
-	}
+    public static String getStringOption(Context ctx,String name, String def)
+    {
+        SharedPreferences settings = ctx.getSharedPreferences("OPTIONS",    Context.MODE_MULTI_PROCESS);
+        return settings.getString(name, def);
+    }
 
-	public static boolean showAbout(Context ctx)
-	{
-		try {
-			int versionCode = ctx.getPackageManager().getPackageInfo(ctx.getPackageName(), 0).versionCode;
-
-			SharedPreferences settings = ctx.getSharedPreferences("OPTIONS", 0);
-			int last_ver = settings.getInt("last_opened_version", -1);
-			//Log.d("test"," ver = " +  versionCode + " las=" + last_ver);
-			if (versionCode != last_ver)
-			{
-				SharedPreferences.Editor editor = settings.edit();
-				editor.putInt("last_opened_version", versionCode);
-				editor.apply();
-				return true;
-			}
-			else
-				return false;
-
-		} catch (NameNotFoundException e) {
-			return false;
-		}
-	}
-
-	public static float getFloatOption(Context ctx,String name, float def)
-	{
-		SharedPreferences settings = ctx.getSharedPreferences("OPTIONS", 	Context.MODE_MULTI_PROCESS);
-		return settings.getFloat(name, def);
-	}
-
-	public static void setFloatOption(Context ctx,String name, float value)
-	{
-		SharedPreferences settings = ctx.getSharedPreferences("OPTIONS", 	Context.MODE_MULTI_PROCESS);
-		SharedPreferences.Editor editor = settings.edit();
-		editor.putFloat(name, value);
-		editor.apply();
-	}
-
-	public static boolean getBoolOption(Context ctx,String name, boolean def)
-	{
-		SharedPreferences settings = ctx.getSharedPreferences("OPTIONS", 	Context.MODE_MULTI_PROCESS);
-		return settings.getBoolean(name, def);
-	}
-
-	public static void setBoolOption(Context ctx,String name, boolean value)
-	{
-		SharedPreferences settings = ctx.getSharedPreferences("OPTIONS", 	Context.MODE_MULTI_PROCESS);
-		SharedPreferences.Editor editor = settings.edit();
-		editor.putBoolean(name, value);
-		editor.apply();
-	}
-
-	public static int getIntOption(Context ctx,String name, int def)
-	{
-		SharedPreferences settings = ctx.getSharedPreferences("OPTIONS", 	Context.MODE_MULTI_PROCESS);
-		return settings.getInt(name, def);
-	}
-
-	public static void setIntOption(Context ctx,String name, int value)
-	{
-		SharedPreferences settings = ctx.getSharedPreferences("OPTIONS", 	Context.MODE_MULTI_PROCESS);
-		SharedPreferences.Editor editor = settings.edit();
-		editor.putInt(name, value);
-		editor.apply();
-	}
-
-	public static long getLongOption(Context ctx,String name, long def)
-	{
-		SharedPreferences settings = ctx.getSharedPreferences("OPTIONS", 	Context.MODE_MULTI_PROCESS);
-		return settings.getLong(name, def);
-	}
-
-	public static void setLongOption(Context ctx,String name, long value)
-	{
-		SharedPreferences settings = ctx.getSharedPreferences("OPTIONS", 	Context.MODE_MULTI_PROCESS);
-		SharedPreferences.Editor editor = settings.edit();
-		editor.putLong(name, value);
-		editor.apply();
-	}
-
-	public static String getStringOption(Context ctx,String name, String def)
-	{
-		SharedPreferences settings = ctx.getSharedPreferences("OPTIONS", 	Context.MODE_MULTI_PROCESS);
-		return settings.getString(name, def);
-	}
-
-	public static void setStringOption(Context ctx,String name, String value)
-	{
-		SharedPreferences settings = ctx.getSharedPreferences("OPTIONS", 	Context.MODE_MULTI_PROCESS);
-		SharedPreferences.Editor editor = settings.edit();
-		editor.putString(name, value);
-		editor.apply();
-	}
-
-	public static long getRID()
-	{
-		return rid;
-	}
+    public static void setStringOption(Context ctx,String name, String value)
+    {
+        SharedPreferences settings = ctx.getSharedPreferences("OPTIONS",    Context.MODE_MULTI_PROCESS);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString(name, value);
+        editor.apply();
+    }
 }
