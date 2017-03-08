@@ -28,32 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.beloko.opengames.prboom.Game"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:launchMode="singleTop"
-            android:process=":Doom"
-            android:screenOrientation="sensorLandscape"
-           >
-        </activity>
-       
-        <activity
-            android:name="com.beloko.opengames.chocdoom.Game"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:launchMode="singleTop"
-            android:process=":Game"
-            android:screenOrientation="sensorLandscape"
-            >
-        </activity>
-        <activity
-            android:name="com.beloko.opengames.chocdoom.Setup"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:launchMode="singleTop"
-            android:process=":Setup"
-            android:screenOrientation="sensorLandscape"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
-        </activity>
-        <activity
-            android:name="com.beloko.opengames.gzdoom.Game"
+            android:name="net.nullsum.doom.Game"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:process=":Game"
@@ -63,8 +38,8 @@
     </application>
 
     <uses-sdk
-        android:minSdkVersion="12"
-        android:targetSdkVersion="19" >
+        android:minSdkVersion="19"
+        android:targetSdkVersion="25" >
     </uses-sdk>
 
 </manifest>

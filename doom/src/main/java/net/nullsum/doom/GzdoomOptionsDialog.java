@@ -16,8 +16,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Spinner;
 
-import com.beloko.opengames.AboutDialog;
-import com.beloko.opengames.AppSettings;
+import net.nullsum.doom.AppSettings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,16 +95,6 @@ public class GzdoomOptionsDialog {
 				downloadFluidSynth();
 			}
 		});
-		
-		Button credits =  (Button)dialog.findViewById(R.id.fludisynth_license_button);
-		credits.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				AboutDialog.show(act, R.raw.changes, R.raw.about);
-			}
-		});
-		
 		
 		dialog.show();
 	}

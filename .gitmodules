@@ -1,6 +1,0 @@
-[submodule "TouchControls"]
-	path = TouchControls
-	url = git@github.com:nvllsvm/TouchControls.git
-[submodule "opengames/src/main/jni/MobileTouchControls"]
-	path = opengames/src/main/jni/MobileTouchControls
-	url = git@github.com:nvllsvm/MobileTouchControls.git

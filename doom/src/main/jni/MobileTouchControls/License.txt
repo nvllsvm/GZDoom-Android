@@ -1,0 +1,6 @@
+TouchControls was created by Emile Belanger.
+This code is under GPLv2 license.
+
+Please contact me if you wish to use a different license.
+emile.belanger@gmail.com
+

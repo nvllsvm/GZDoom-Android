@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <resources>
-    <!-- Simple strings. -->
+
     <string name="app_name">GZDoom</string>
+
+    <string-array name="double_tap_actions">
+        <item>None</item>
+        <item>Shoot</item>
+        <item>Jump</item>
+        <item>Use</item>
+    </string-array>
+    <string-array name="double_tap_actions_jk">
+        <item>None</item>
+        <item>Shoot</item>
+        <item>Jump</item>
+        <item>Use</item>
+        <item>Use Force</item>
+    </string-array>
+    <string-array name="quake2_hud_size">
+        <item>Large</item>
+        <item>Medium</item>
+        <item>Small</item>
+    </string-array>
+
 </resources>
