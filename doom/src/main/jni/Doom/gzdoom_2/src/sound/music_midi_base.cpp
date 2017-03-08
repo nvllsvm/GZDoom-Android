@@ -196,7 +196,7 @@ CCMD (snd_listmididevices)
 // Everything but Windows uses this code.
 
 #ifdef __ANDROID__ //Only GUS and fluidsynth please
-CUSTOM_CVAR(Int, snd_mididevice, -4, CVAR_ARCHIVE|CVAR_GLOBALCONFIG)
+CUSTOM_CVAR(Int, snd_mididevice, -5, CVAR_ARCHIVE|CVAR_GLOBALCONFIG)
 {
 	if (self < -5)
 		self = -5;
