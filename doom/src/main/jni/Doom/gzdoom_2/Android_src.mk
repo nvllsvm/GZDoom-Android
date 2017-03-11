@@ -56,9 +56,9 @@ $(TOP_DIR)/../../Serial/jni \
  $(GZDOOM_TOP_PATH)/src/g_raven \
  $(GZDOOM_TOP_PATH)/src/g_strife \
  $(GZDOOM_TOP_PATH)/src/g_shared \
-$(TOP_DIR)/openal/include \
+$(TOP_DIR)/openal-soft-android/include \
 $(TOP_DIR)/FMOD_studio/api/lowlevel/inc \
-$(TOP_DIR)/jpeg8d \
+$(TOP_DIR)/jpeg8d/include \
 $(TOP_DIR)/fluidsynth/include_from_prboom \
 $(TOP_DIR)/MobileTouchControls  \
 
@@ -433,7 +433,7 @@ LOCAL_LDLIBS := -lGLESv1_CM -ldl -llog -lOpenSLES -lz
 
 LOCAL_LDLIBS += -fuse-ld=bfd
 LOCAL_LDLIBS +=  -lEGL
-LOCAL_STATIC_LIBRARIES :=  nanogl fluidsynth-static SDL_net libjpeg lzma_dev gdtoa_dev dumb_dev gme_dev bzip2_dev
+LOCAL_STATIC_LIBRARIES := nanogl fluidsynth-static SDL_net jpeg_static lzma_dev gdtoa_dev dumb_dev gme_dev bzip2_dev
 LOCAL_SHARED_LIBRARIES := touchcontrols fmod openal SDL
 #fmod
 include $(BUILD_SHARED_LIBRARY)

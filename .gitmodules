@@ -1,0 +1,6 @@
+[submodule "doom/src/main/jni/jpeg8d"]
+	path = doom/src/main/jni/jpeg8d
+	url = https://github.com/nvllsvm/jpeg8d.git
+[submodule "doom/src/main/jni/openal-soft-android"]
+	path = doom/src/main/jni/openal-soft-android
+	url = https://github.com/nvllsvm/openal-soft-android.git
