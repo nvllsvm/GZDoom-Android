@@ -10,7 +10,7 @@ include $(TOP_DIR)/Doom/gzdoom_2/Android.mk
 
 include $(TOP_DIR)/FMOD_studio/Android.mk
 include $(TOP_DIR)/fluidsynth/Android.mk
-include $(TOP_DIR)/openal/Android.mk
+include $(TOP_DIR)/openal-soft-android/Android.mk
 
 include $(TOP_DIR)/MobileTouchControls/Android.mk
 

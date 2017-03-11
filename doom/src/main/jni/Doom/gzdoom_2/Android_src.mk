@@ -56,7 +56,7 @@ $(TOP_DIR)/../../Serial/jni \
  $(GZDOOM_TOP_PATH)/src/g_raven \
  $(GZDOOM_TOP_PATH)/src/g_strife \
  $(GZDOOM_TOP_PATH)/src/g_shared \
-$(TOP_DIR)/openal/include \
+$(TOP_DIR)/openal-soft-android/include \
 $(TOP_DIR)/FMOD_studio/api/lowlevel/inc \
 $(TOP_DIR)/jpeg8d/include \
 $(TOP_DIR)/fluidsynth/include_from_prboom \
