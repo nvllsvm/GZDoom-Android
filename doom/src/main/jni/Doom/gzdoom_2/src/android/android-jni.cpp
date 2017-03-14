@@ -85,14 +85,10 @@ void openGLStart()
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	//rgluOrtho2D(0.0f, winWidth, 0.0f, winHeight);
 	glViewport(0, 0, android_screen_width, android_screen_height);
 	glOrthof(0.0f, android_screen_width, android_screen_height, 0.0f, -1.0f, 1.0f);
 	glMatrixMode(GL_MODELVIEW);
-	//glPushMatrix();
 	glLoadIdentity();
-	//return;
-	//-----------------
 	glDisable(GL_ALPHA_TEST);
 	glDisable(GL_DEPTH_TEST);
 	glDisableClientState(GL_COLOR_ARRAY);
@@ -126,13 +122,6 @@ void openGLEnd()
 	{
 		glMatrixMode(GL_TEXTURE);
 	}
-	/*
-	glDisable (GL_BLEND);
-	glColor4f(1,1,1,1);
-	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
-	//glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	 */
 }
 
 void gameSettingsButton(int state)
@@ -230,8 +219,6 @@ void blankButton(int state,int code)
 void customButton(int state,int code)
 {
 	PortableKeyEvent(state, code, 0);
-	//if (state == 0)
-	//	tcCutomButtons->setEnabled(false);
 }
 
 //Weapon wheel callbacks
@@ -265,14 +252,12 @@ int right_double_action;
 
 void left_double_tap(int state)
 {
-	//LOGTOUCH("L double %d",state);
 	if (left_double_action)
 		PortableAction(state,left_double_action);
 }
 
 void right_double_tap(int state)
 {
-	//LOGTOUCH("R double %d",state);
 	if (right_double_action)
 		PortableAction(state,right_double_action);
 }
@@ -286,16 +271,12 @@ float pitch_sens,yaw_sens;
 void left_stick(float joy_x, float joy_y,float mouse_x, float mouse_y)
 {
 	joy_x *=10;
-	//float strafe = joy_x*joy_x;
 	float strafe = joy_x;
-	//if (joy_x < 0)
-	//	strafe *= -1;
 
 	PortableMove(joy_y * 15 * forward_sens,-strafe * strafe_sens);
 }
 void right_stick(float joy_x, float joy_y,float mouse_x, float mouse_y)
 {
-	//LOGI(" mouse x = %f",mouse_x);
 	int invert = invertLook?-1:1;
 
 	float scale;
@@ -438,19 +419,6 @@ void initControls(int width, int height,const char * graphics_path)
 		wheel->signal_enabled.connect(sigc::ptr_fun(&weaponWheelSelected));
 		tcWeaponWheel->addControl(wheel);
 		tcWeaponWheel->setAlpha(0.8);
-#if defined(CHOC_HEXEN)
-		//Inventory
-		tcInventory->addControl(new touchcontrols::Button("invuse",touchcontrols::RectF(3,14,5,16),"enter",PORT_ACT_INVUSE));
-		tcInventory->addControl(new touchcontrols::Button("invprev",touchcontrols::RectF(6,14,8,16),"arrow_left",PORT_ACT_INVPREV));
-		tcInventory->addControl(new touchcontrols::Button("invnext",touchcontrols::RectF(8,14,10,16),"arrow_right",PORT_ACT_INVNEXT));
-#endif
-#if defined(CHOC_STRIFE)
-		//Inventory
-		tcInventory->addControl(new touchcontrols::Button("invuse",touchcontrols::RectF(0,14,2,16),"enter",PORT_ACT_INVUSE));
-		tcInventory->addControl(new touchcontrols::Button("invprev",touchcontrols::RectF(0,12,2,14),"arrow_left",PORT_ACT_INVPREV));
-		tcInventory->addControl(new touchcontrols::Button("invnext",touchcontrols::RectF(2,12,4,14),"arrow_right",PORT_ACT_INVNEXT));
-#endif
-
 		tcInventory->signal_button.connect(  sigc::ptr_fun(&inventoryButton) );
 		tcInventory->setAlpha(0.5);
 
@@ -488,7 +456,6 @@ void initControls(int width, int height,const char * graphics_path)
 		controlsContainer.addControlGroup(tcCutomButtons);
 		controlsContainer.addControlGroup(tcMenuMain);
 		controlsContainer.addControlGroup(tcWeaponWheel);
-		//controlsContainer.addControlGroup(tcInventory);
 		controlsContainer.addControlGroup(tcAutomap);
 		controlsContainer.addControlGroup(tcBlank);
 		controlsCreated = 1;
@@ -507,8 +474,6 @@ void initControls(int width, int height,const char * graphics_path)
 
 void updateTouchScreenMode(touchscreemode_t mode)
 {
-	// LOGI("updateTouchScreenModeA %d",mode);
-
 	if (mode != currentScreenMode){
 
 		//first disable the last screen and fade out is necessary
@@ -679,9 +644,6 @@ JAVA_FUNC(init) ( JNIEnv* env,	jobject thiz,jstring graphics_dir,jint audio_rate
 
 	LOGI("game_path = %s",getGamePath());
 
-	//Needed for ecwolf to run
-	//home_env = "HOME=/" + game_path;
-	//putenv(home_env.c_str());
 	setenv("HOME", getGamePath(),1);
 
 	putenv("TIMIDITY_CFG=../timidity.cfg");
@@ -710,25 +672,6 @@ JAVA_FUNC(init) ( JNIEnv* env,	jobject thiz,jstring graphics_dir,jint audio_rate
 jint EXPORT_ME
 JAVA_FUNC(frame) ( JNIEnv* env,	jobject thiz )
 {
-
-	//NOT CALLED
-	/*
-	LOGI("frame");
-
-	PortableFrame();
-
-	if (quit_now)
-	{
-		LOGI("frame QUIT");
-		return 128;
-	}
-
-	frameControls();
-
-	int ret = 0;
-
-	return ret;
-	 */
 }
 
 __attribute__((visibility("default"))) jint JNI_OnLoad(JavaVM* vm, void* reserved)
@@ -757,7 +700,6 @@ JAVA_FUNC(keypress) (JNIEnv *env, jobject obj,jint down, jint keycode, jint unic
 void EXPORT_ME
 JAVA_FUNC(touchEvent) (JNIEnv *env, jobject obj,jint action, jint pid, jfloat x, jfloat y)
 {
-	//LOGI("TOUCHED");
 	controlsContainer.processPointer(action,pid,x,y);
 }
 
