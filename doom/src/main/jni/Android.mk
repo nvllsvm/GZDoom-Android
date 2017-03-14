@@ -15,6 +15,3 @@ include $(TOP_DIR)/openal-soft-android/Android.mk
 include $(TOP_DIR)/MobileTouchControls/Android.mk
 
 include $(TOP_DIR)/SDL/Android.mk
-include $(TOP_DIR)/SDL_net/Android.mk
-include $(TOP_DIR)/SDL_mixer/Android.mk
-include $(TOP_DIR)/SDL_image/Android.mk

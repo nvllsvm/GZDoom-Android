@@ -433,7 +433,7 @@ LOCAL_LDLIBS := -lGLESv1_CM -ldl -llog -lOpenSLES -lz
 
 LOCAL_LDLIBS += -fuse-ld=bfd
 LOCAL_LDLIBS +=  -lEGL
-LOCAL_STATIC_LIBRARIES := nanogl fluidsynth-static SDL_net jpeg_static lzma_dev gdtoa_dev dumb_dev gme_dev bzip2_dev
+LOCAL_STATIC_LIBRARIES := nanogl fluidsynth-static jpeg_static lzma_dev gdtoa_dev dumb_dev gme_dev bzip2_dev
 LOCAL_SHARED_LIBRARIES := touchcontrols fmod openal SDL
 #fmod
 include $(BUILD_SHARED_LIBRARY)
