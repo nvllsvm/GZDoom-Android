@@ -9,10 +9,6 @@ LOCAL_MODULE    := gzdoom_dev
 #-DNO_FMOD
 LOCAL_CPPFLAGS :=  -O2 -DONLY_GPL -DHAVE_FLUIDSYNTH  -Wformat -Werror=format-security  -fexceptions -fpermissive -DANDROID -DUSE_GLES -Dstricmp=strcasecmp -Dstrnicmp=strncasecmp -D__forceinline=inline -DNO_GTK -DDISABLE_SSE -fsigned-char
 
-ifeq ($(BUILD_SERIAL),1)
-LOCAL_CPPFLAGS += -DANTI_HACK 
-endif
-
 #$(TOP_DIR)/GL \
 
 NON_GPL_SOURCE := \

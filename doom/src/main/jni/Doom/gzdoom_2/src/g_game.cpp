@@ -527,15 +527,6 @@ static inline int joyint(double val)
 #ifdef __ANDROID__
 extern void Android_IN_Move(ticcmd_t* cmd );
 
-#ifdef ANTI_HACK
-int crc_check_count = 0;
-int crc_failed = 0;
-extern "C"
-{
-extern int self_crc_check(const char * file);
-extern const char * getLibPath();
-}
-#endif
 #endif
 //
 // G_BuildTiccmd
@@ -701,30 +692,7 @@ void G_BuildTiccmd (ticcmd_t *cmd)
 	}
 
 #ifdef __ANDROID__
-
-#ifdef ANTI_HACK
-	crc_check_count++;
-
-	if (crc_check_count == (30*60) * 1) //0.5 minute
-		{
-		static char file[] = {
-				'/'^0xA5,'d'^0xA5,'a'^0xA5,'t'^0xA5,'a'^0xA5,
-				'/'^0xA5,'d'^0xA5,'a'^0xA5,'t'^0xA5,'a'^0xA5,
-				'/'^0xA5,'c'^0xA5,'o'^0xA5,'m'^0xA5,'.'^0xA5,'b'^0xA5,'e'^0xA5,'l'^0xA5,'o'^0xA5,'k'^0xA5,'o'^0xA5,'.'^0xA5,'d'^0xA5,'o'^0xA5,'o'^0xA5,'m'^0xA5,
-				'/'^0xA5,'l'^0xA5,'i'^0xA5,'b'^0xA5,
-				'/'^0xA5,'l'^0xA5,'i'^0xA5,'b'^0xA5,'g'^0xA5,'z'^0xA5,'d'^0xA5,'o'^0xA5,'o'^0xA5,'m'^0xA5,'.'^0xA5,'s'^0xA5,'o'^0xA5,
-				0xA5};
-
-
-		for (int n=0;n<sizeof(file);n++)
-			file[n] = file[n] ^ 0xA5;
-
-		crc_failed = self_crc_check(file);
-	}
-
-	if (!crc_failed)
-#endif
-		Android_IN_Move(cmd);
+	Android_IN_Move(cmd);
 #endif
 
 	cmd->ucmd.pitch = LocalViewPitch >> 16;

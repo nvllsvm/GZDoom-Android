@@ -8,10 +8,6 @@
 
 #include "SDL_android_extra.h"
 
-#ifdef ANTI_HACK
-#include "s-setup/s-setup.h"
-#endif
-
 #include "TouchControlsContainer.h"
 #include "JNITouchControlsUtils.h"
 
@@ -54,10 +50,6 @@ bool hideTouchControls = true;
 bool enableWeaponWheel = true;
 
 bool shooting = false;
-
-#ifdef ANTI_HACK
-bool dead = false;
-#endif
 
 static int controlsCreated = 0;
 touchcontrols::TouchControlsContainer controlsContainer;
@@ -177,10 +169,6 @@ extern unsigned int Sys_Milliseconds(void);
 static unsigned int reload_time_down;
 void gameButton(int state,int code)
 {
-
-#ifdef ANTI_HACK
-	if (dead) return;
-#endif
 
 	if (code == KEY_SHOOT)
 	{
@@ -582,36 +570,12 @@ void updateTouchScreenMode(touchscreemode_t mode)
 }
 void frameControls()
 {
-#ifdef ANTI_HACK
-	if ((rand() % 100) == 50)
-		check_rsa_key();
-
-	if ((rand() % 1000) == 50)
-		check_ufile("7u2hdyjeu7s8aikw");
-#endif
-
-
 	updateTouchScreenMode(PortableGetScreenMode());
 
 	setHideSticks(!showSticks);
 	controlsContainer.draw();
 
-#ifdef ANTI_HACK
-	if (ufile_fail || rsa_key_fail || setup_not_run_fail || hash_fail)
-	{
-		//LOGI("%d %d %d %d",ufile_fail,rsa_key_fail,setup_not_run_fail,hash_fail);
-		glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-		dead = true;
-	}
-#endif
-
 	swapBuffers();
-
-
-#ifdef ANTI_HACK
-	launch_ssetup_hash_thread();
-#endif
 }
 
 
@@ -697,10 +661,6 @@ int android_audio_rate;
 jint EXPORT_ME
 JAVA_FUNC(init) ( JNIEnv* env,	jobject thiz,jstring graphics_dir,jint audio_rate,jobjectArray argsArray,jint lowRes,jstring game_path_ )
 {
-#ifdef ANTI_HACK
-	getGlobalClasses(env);
-#endif
-
 	env_ = env;
 	android_audio_rate = audio_rate;
 
@@ -775,9 +735,6 @@ __attribute__((visibility("default"))) jint JNI_OnLoad(JavaVM* vm, void* reserve
 {
 	LOGI("JNI_OnLoad");
 	setTCJNIEnv(vm);
-#ifdef ANTI_HACK
-	setSSetupJVM(vm);
-#endif
 	return JNI_VERSION_1_4;
 }
 
