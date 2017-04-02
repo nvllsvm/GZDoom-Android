@@ -100,23 +100,6 @@ public class LaunchFragmentGZdoom extends Fragment{
         });
         copyWadsTextView = (TextView)mainView.findViewById(R.id.copy_wads_textview);
 
-
-        ImageView options = (ImageView)mainView.findViewById(R.id.gzdoom_options_imageview);
-        options.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                new GzdoomOptionsDialog(getActivity(), fullBaseDir,false){
-
-                    public void downloadFluidSynth()
-                    {
-                        Utils.showDownloadDialog(getActivity(), "Download Fluidsynth music (55MB)?",
-                                "", AppSettings.getGameDir(), "WeedsGM3.sf2");
-                    }
-                };
-            }
-        });
-
         Button startfull = (Button)mainView.findViewById(R.id.start_full);
         startfull.setOnClickListener(new OnClickListener() {
 
