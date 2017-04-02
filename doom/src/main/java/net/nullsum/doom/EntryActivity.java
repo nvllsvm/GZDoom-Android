@@ -202,9 +202,11 @@ public class EntryActivity extends FragmentActivity  {
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE: {
-                // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
+                    // dirty hack :(
+                    final ActionBar actionBar = getActionBar();
+                    actionBar.setSelectedNavigationItem(1);
+                    actionBar.setSelectedNavigationItem(0);
                 }
             }
         }
