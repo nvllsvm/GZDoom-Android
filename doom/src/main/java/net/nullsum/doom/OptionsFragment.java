@@ -31,6 +31,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class OptionsFragment extends Fragment{
     String LOG = "OptionsFragment";
@@ -48,6 +51,34 @@ public class OptionsFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View mainView = inflater.inflate(R.layout.fragment_options, null);
+        Spinner resSpinnder = (Spinner)mainView.findViewById(R.id.resolution_div_spinner);
+
+        List<String> list = new ArrayList<String>();
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        list.add("4");
+        list.add("5");
+        list.add("6");
+        list.add("7");
+        list.add("8");
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item,list);
+        dataAdapter.setDropDownViewResource (android.R.layout.simple_spinner_dropdown_item);
+
+        resSpinnder.setAdapter(dataAdapter);
+        resSpinnder.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                AppSettings.setIntOption(getActivity(), "gzdoom_res_div", position+1);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+        int selected = AppSettings.getIntOption(getActivity(),  "gzdoom_res_div", 1);
+        resSpinnder.setSelection(selected-1);
 
         basePathTextView = (TextView)mainView.findViewById(R.id.base_path_textview);
 
