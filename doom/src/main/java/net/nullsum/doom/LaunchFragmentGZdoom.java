@@ -186,45 +186,6 @@ public class LaunchFragmentGZdoom extends Fragment{
             //Utils.copyAsset(getActivity(),"brightmaps_dt.pk3",base);
         }
 
-        File timiditycfg = new File(AppSettings.getBaseDir() + "/eawpats/timidity.cfg"  );
-        File doomtimiditycfg = new File(AppSettings.getGameDir() + "/timidity.cfg"  );
-
-        if (!ignoreMusic &&! timiditycfg.exists())
-        {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setMessage("Download Music Sound Fonts(31MB)?")
-            .setCancelable(true)
-            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    // eawpats.zip
-                    return;
-                }
-            });
-            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    startGame(base, true,moreArgs);
-                    dialog.cancel();
-                }
-            });
-            AlertDialog alert = builder.create();
-            alert.show();
-            return;
-        }
-
-        if (timiditycfg.exists() && !doomtimiditycfg.exists())
-        {
-            Log.d(LOG,"Copying timidity file");
-            try {
-                Utils.copyFile(new FileInputStream(timiditycfg),new FileOutputStream(doomtimiditycfg));
-            } catch (FileNotFoundException e) {
-                Toast.makeText(getActivity(),"Error copying timidity.cfg " + e.toString(), Toast.LENGTH_LONG).show();
-            } catch (IOException e) {
-                Toast.makeText(getActivity(),"Error copying timidity.cfg " + e.toString(), Toast.LENGTH_LONG).show();
-            }
-        }
-
         //File[] files = new File(basePath ).listFiles();
 
         String extraArgs = argsEditText.getText().toString().trim();
@@ -267,7 +228,7 @@ public class LaunchFragmentGZdoom extends Fragment{
 
         String fluidSynthFile = "../WeedsGM3.sf2";
 
-        intent.putExtra("args",args + saveDir + " +set fluid_patchset " + fluidSynthFile + " +set midi_dmxgus 0 +set midi_config timidity.cfg ");
+        intent.putExtra("args",args + saveDir + " +set fluid_patchset " + fluidSynthFile + " +set midi_dmxgus 0 ");
 
         startActivity(intent);
     }
