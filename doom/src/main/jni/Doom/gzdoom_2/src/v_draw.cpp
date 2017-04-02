@@ -79,7 +79,7 @@ int CleanXfac_1, CleanYfac_1, CleanWidth_1, CleanHeight_1;
 // FillSimplePoly uses this
 extern "C" short spanend[MAXHEIGHT];
 
-CVAR (Bool, hud_scale, false, CVAR_ARCHIVE);
+CVAR (Bool, hud_scale, true, CVAR_ARCHIVE);
 
 // For routines that take RGB colors, cache the previous lookup in case there
 // are several repetitions with the same color.
