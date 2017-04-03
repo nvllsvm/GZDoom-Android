@@ -60,16 +60,6 @@ public class AppSettings {
         net.nullsum.doom.CDAudioPlayer.initFiles(musicBaseDir);
     }
 
-    public static String getBaseDir()
-    {
-        return  AppSettings.gzdoomBaseDir;
-    }
-
-    public static String getGameDir()
-    {
-        return  AppSettings.gzdoomBaseDir;
-    }
-
     public static String getQuakeFullDir()
     {
         String quakeFilesDir = AppSettings.gzdoomBaseDir;

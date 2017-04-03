@@ -518,25 +518,6 @@ public class Utils {
         }
     }
 
-    public static void copyTimidityFile(Activity act)
-    {
-        File timiditycfg = new File(net.nullsum.doom.AppSettings.getBaseDir() + "/eawpats/timidity.cfg"  );
-        File doomtimiditycfg = new File(net.nullsum.doom.AppSettings.getGameDir() + "/timidity.cfg"  );
-
-        if (timiditycfg.exists() && !doomtimiditycfg.exists())
-        {
-            Log.d(LOG,"Copying timidity file");
-            try {
-                Utils.copyFile(new FileInputStream(timiditycfg),new FileOutputStream(doomtimiditycfg));
-            } catch (FileNotFoundException e) {
-                Toast.makeText(act,"Error copying timidity.cfg " + e.toString(), Toast.LENGTH_LONG).show();
-            } catch (IOException e) {
-                Toast.makeText(act,"Error copying timidity.cfg " + e.toString(), Toast.LENGTH_LONG).show();
-            }
-        }
-    }
-
-
     public static void setImmersionMode(final Activity act)
     {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
