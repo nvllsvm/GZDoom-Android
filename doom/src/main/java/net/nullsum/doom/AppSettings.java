@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class AppSettings {
 
-    public static String belokoBaseDir;
+    public static String gzdoomBaseDir;
 
     public static String musicBaseDir;
 
@@ -26,8 +26,8 @@ public class AppSettings {
 
     public static void resetBaseDir(Context ctx)
     {
-        belokoBaseDir  =  Environment.getExternalStorageDirectory().toString() + "/GZDoom";
-        setStringOption(ctx, "base_path", belokoBaseDir);
+        gzdoomBaseDir  =  Environment.getExternalStorageDirectory().toString() + "/GZDoom";
+        setStringOption(ctx, "base_path", gzdoomBaseDir);
     }
 
     public static void reloadSettings(Context ctx)
@@ -36,8 +36,8 @@ public class AppSettings {
 
         TouchSettings.reloadSettings(ctx);
 
-        belokoBaseDir = getStringOption(ctx, "base_path", null);
-        if (belokoBaseDir == null)
+        gzdoomBaseDir = getStringOption(ctx, "base_path", null);
+        if (gzdoomBaseDir == null)
         {
             resetBaseDir(ctx);
         }
@@ -45,7 +45,7 @@ public class AppSettings {
         String music = getStringOption(ctx, "music_path", null);
         if (music == null)
         {
-            music  =  belokoBaseDir + "/doom/Music";
+            music  =  gzdoomBaseDir + "/doom/Music";
             setStringOption(ctx, "music_path", music);
         }
 
@@ -62,17 +62,17 @@ public class AppSettings {
 
     public static String getBaseDir()
     {
-        return  AppSettings.belokoBaseDir;
+        return  AppSettings.gzdoomBaseDir;
     }
 
     public static String getGameDir()
     {
-        return  AppSettings.belokoBaseDir;
+        return  AppSettings.gzdoomBaseDir;
     }
 
     public static String getQuakeFullDir()
     {
-        String quakeFilesDir = AppSettings.belokoBaseDir;
+        String quakeFilesDir = AppSettings.gzdoomBaseDir;
         return quakeFilesDir + "/config";
     }
 

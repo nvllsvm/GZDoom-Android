@@ -82,7 +82,7 @@ public class OptionsFragment extends Fragment{
 
         basePathTextView = (TextView)mainView.findViewById(R.id.base_path_textview);
 
-        basePathTextView.setText(AppSettings.belokoBaseDir);
+        basePathTextView.setText(AppSettings.gzdoomBaseDir);
 
         Button chooseDir = (Button)mainView.findViewById(R.id.choose_base_button);
         chooseDir.setOnClickListener(new OnClickListener() {
@@ -100,7 +100,7 @@ public class OptionsFragment extends Fragment{
                             }
                         });
 
-                directoryChooserDialog.chooseDirectory(AppSettings.belokoBaseDir);
+                directoryChooserDialog.chooseDirectory(AppSettings.gzdoomBaseDir);
             }
         });
 
@@ -111,7 +111,7 @@ public class OptionsFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 AppSettings.resetBaseDir(getActivity());
-                updateBaseDir(AppSettings.belokoBaseDir);
+                updateBaseDir(AppSettings.gzdoomBaseDir);
             }
         });
 
@@ -209,11 +209,11 @@ public class OptionsFragment extends Fragment{
         }
 
 
-        AppSettings.belokoBaseDir = dir;
-        AppSettings.setStringOption(getActivity(), "base_path", AppSettings.belokoBaseDir);
+        AppSettings.gzdoomBaseDir = dir;
+        AppSettings.setStringOption(getActivity(), "base_path", AppSettings.gzdoomBaseDir);
         AppSettings.createDirectories(getActivity());
 
-        basePathTextView.setText(AppSettings.belokoBaseDir);
+        basePathTextView.setText(AppSettings.gzdoomBaseDir);
     }
 
     private void showError(String error)
