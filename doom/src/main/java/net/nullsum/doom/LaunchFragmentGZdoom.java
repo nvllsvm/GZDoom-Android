@@ -226,7 +226,7 @@ public class LaunchFragmentGZdoom extends Fragment{
         String saveDir;
         saveDir = " -savedir " + base + "/gzdoom_saves";
 
-        String fluidSynthFile = "../WeedsGM3.sf2";
+        String fluidSynthFile = "../soundfont/WeedsGM3.sf2";
 
         intent.putExtra("args",args + saveDir + " +set fluid_patchset " + fluidSynthFile + " +set midi_dmxgus 0 ");
 
