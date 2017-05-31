@@ -8,6 +8,7 @@
 *.apk
 /blakestone
 /doom/build
+/doom/.externalNativeBuild
 /TouchControls/build
 /doom/src/main/libs
 /doom/src/main/obj

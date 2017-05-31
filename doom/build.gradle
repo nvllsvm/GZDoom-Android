@@ -9,6 +9,10 @@ android {
         targetSdkVersion 25
         versionCode 2
         versionName "0.2.0"
+
+        ndk {
+            abiFilters 'armeabi-v7a'
+        }
     }
 
     sourceSets.main {
@@ -27,8 +31,13 @@ android {
             task.enabled = false
         }
     }
-}
 
+    externalNativeBuild {
+        ndkBuild {
+            path "src/main/jni/Android.mk"
+        }
+    }
+}
 
 
 dependencies {

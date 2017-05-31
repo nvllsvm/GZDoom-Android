@@ -4,7 +4,6 @@ A fork of D-Touch that aims to be the de facto port of GZDoom on Android.
 
 ## Building
     git submodule update --init
-    NDK_PROJECT_PATH=doom/src/main ndk-build
     ./gradlew assemble
 
 ## Credits
