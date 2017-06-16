@@ -182,6 +182,7 @@ public class LaunchFragmentGZdoom extends Fragment{
         {
             Utils.copyAsset(getActivity(),"gzdoom.pk3",base);
             Utils.copyAsset(getActivity(),"gzdoom_dev.pk3",base);
+            Utils.copyAsset(getActivity(),"gzdoom.sf2",base);
             //Utils.copyAsset(getActivity(),"lights_dt.pk3",base);
             //Utils.copyAsset(getActivity(),"brightmaps_dt.pk3",base);
         }
@@ -226,7 +227,7 @@ public class LaunchFragmentGZdoom extends Fragment{
         String saveDir;
         saveDir = " -savedir " + base + "/gzdoom_saves";
 
-        String fluidSynthFile = "../soundfont/WeedsGM3.sf2";
+        String fluidSynthFile = "gzdoom.sf2";
 
         intent.putExtra("args",args + saveDir + " +set fluid_patchset " + fluidSynthFile + " +set midi_dmxgus 0 ");
 
