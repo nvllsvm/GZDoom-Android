@@ -1,39 +1,5 @@
-*** /home/draje/Code/gzdoom/src/version.h	2017-06-18 07:52:50.709680441 -0400
---- /home/draje/Code/GitHub/nvllsvm/GZDoom-Android/doom/src/main/jni/gzdoom21_pre/src/version.h	2017-06-18 09:09:24.165063945 -0400
-***************
-*** 51,57 ****
-  // Version identifier for network games.
-  // Bump it every time you do a release unless you're certain you
-  // didn't change anything that will affect sync.
-! #define NETGAMEVERSION 230
-  
-  // Version stored in the ini's [LastRun] section.
-  // Bump it if you made some configuration change that you want to
---- 51,57 ----
-  // Version identifier for network games.
-  // Bump it every time you do a release unless you're certain you
-  // didn't change anything that will affect sync.
-! #define NETGAMEVERSION 231
-  
-  // Version stored in the ini's [LastRun] section.
-  // Bump it if you made some configuration change that you want to
-***************
-*** 76,82 ****
-  
-  // Use 4500 as the base git save version, since it's higher than the
-  // SVN revision ever got.
-! #define SAVEVER 4512
-  
-  #define SAVEVERSTRINGIFY2(x) #x
-  #define SAVEVERSTRINGIFY(x) SAVEVERSTRINGIFY2(x)
---- 76,82 ----
-  
-  // Use 4500 as the base git save version, since it's higher than the
-  // SVN revision ever got.
-! #define SAVEVER 4518
-  
-  #define SAVEVERSTRINGIFY2(x) #x
-  #define SAVEVERSTRINGIFY(x) SAVEVERSTRINGIFY2(x)
+*** doom/src/main/jni/gzdoom/src/version.h	2017-06-19 01:07:23.465325508 -0400
+--- doom/src/main/jni/Doom/gzdoom_2/src/version.h	2017-06-20 00:03:47.057308754 -0400
 ***************
 *** 86,92 ****
   

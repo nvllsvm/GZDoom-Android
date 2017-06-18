@@ -11,16 +11,6 @@
   
   // EXTERNAL FUNCTION PROTOTYPES --------------------------------------------
 ***************
-*** 141,146 ****
---- 142,148 ----
-  	{ "maskedmidtex",			COMPATF_MASKEDMIDTEX, SLOT_COMPAT },
-  	{ "badangles",				COMPATF2_BADANGLES, SLOT_COMPAT2 },
-  	{ "floormove",				COMPATF2_FLOORMOVE, SLOT_COMPAT2 },
-+ 	{ "soundcutoff",			COMPATF2_SOUNDCUTOFF, SLOT_COMPAT2 },
-  
-  	{ NULL, 0, 0 }
-  };
-***************
 *** 317,322 ****
 --- 319,333 ----
   				sc.MustGetNumber();

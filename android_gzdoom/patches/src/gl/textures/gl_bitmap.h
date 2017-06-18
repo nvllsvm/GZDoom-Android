@@ -1,75 +1,50 @@
-*** /home/draje/Code/gzdoom/src/gl/textures/gl_bitmap.h	2017-06-18 07:52:50.696346991 -0400
---- /home/draje/Code/GitHub/nvllsvm/GZDoom-Android/doom/src/main/jni/gzdoom21_pre/src/gl/textures/gl_bitmap.h	2017-06-18 09:09:24.168397311 -0400
+*** doom/src/main/jni/gzdoom/src/gl/textures/gl_bitmap.h	2017-06-18 23:15:10.666640488 -0400
+--- doom/src/main/jni/Doom/gzdoom_2/src/gl/textures/gl_bitmap.h	2017-06-18 23:34:13.267247946 -0400
 ***************
-*** 1,35 ****
-! #ifndef __GL_BITMAP_H
-! #define __GL_BITMAP_H
-! 
-! #include "textures/bitmap.h"
-! #include "gl/textures/gl_material.h"
-! 
-! 
-! class FGLBitmap : public FBitmap
-! {
-! 	int translation;
-! public:
-! 
+*** 5,27 ****
+  #include "gl/textures/gl_material.h"
+  
+  
+  class FGLBitmap : public FBitmap
+  {
+  	int translation;
+  public:
+  
 ! 	FGLBitmap()
 ! 	{
 ! 		translation = 0;
 ! 	}
-! 	FGLBitmap(BYTE *buffer, int pitch, int width, int height)
-! 		: FBitmap(buffer, pitch, width, height)
+  	FGLBitmap(BYTE *buffer, int pitch, int width, int height)
+  		: FBitmap(buffer, pitch, width, height)
 ! 	{
 ! 		translation = 0;
 ! 	}
-! 
+  
 ! 	void SetTranslationInfo(int _trans)
-! 	{
-! 		if (_trans != -1337) translation = _trans;
-! 
-! 	}
-! 
-! 	virtual void CopyPixelDataRGB(int originx, int originy, const BYTE *patch, int srcwidth, 
-! 								int srcheight, int step_x, int step_y, int rotate, int ct, FCopyInfo *inf = NULL);
-! 	virtual void CopyPixelData(int originx, int originy, const BYTE * patch, int srcwidth, int srcheight, 
-! 								int step_x, int step_y, int rotate, PalEntry * palette, FCopyInfo *inf = NULL);
-! };
-! 
-! #endif
---- 1,35 ----
-! #ifndef __GL_BITMAP_H
-! #define __GL_BITMAP_H
-! 
-! #include "textures/bitmap.h"
-! #include "gl/textures/gl_material.h"
-! 
-! 
-! class FGLBitmap : public FBitmap
-! {
-! 	int translation;
-! public:
-! 
-! 	FGLBitmap()
-! 	{
-! 		translation = 0;
-! 	}
-! 	FGLBitmap(BYTE *buffer, int pitch, int width, int height)
-! 		: FBitmap(buffer, pitch, width, height)
-! 	{
-! 		translation = 0;
-! 	}
-! 
-! 	void SetTranslationInfo(int _trans)
-! 	{
-! 		if (_trans != -1337) translation = _trans;
-! 
-! 	}
-! 
-! 	virtual void CopyPixelDataRGB(int originx, int originy, const BYTE *patch, int srcwidth, 
-! 								int srcheight, int step_x, int step_y, int rotate, int ct, FCopyInfo *inf = NULL);
-! 	virtual void CopyPixelData(int originx, int originy, const BYTE * patch, int srcwidth, int srcheight, 
-! 								int step_x, int step_y, int rotate, PalEntry * palette, FCopyInfo *inf = NULL);
-! };
-! 
-! #endif
+  	{
+  		if (_trans != -1337) translation = _trans;
+  
+  	}
+--- 5,26 ----
+  #include "gl/textures/gl_material.h"
+  
+  
++ void ModifyPalette(PalEntry * pout, PalEntry * pin, int cm, int count);
++ 
+  class FGLBitmap : public FBitmap
+  {
++ 	int cm;
+  	int translation;
+  public:
+  
+! 	FGLBitmap() { cm = CM_DEFAULT; translation = 0; }
+  	FGLBitmap(BYTE *buffer, int pitch, int width, int height)
+  		: FBitmap(buffer, pitch, width, height)
+! 	{ cm = CM_DEFAULT; translation = 0; }
+  
+! 	void SetTranslationInfo(int _cm, int _trans=-1337)
+  	{
++ 		if (_cm != -1) cm = _cm;
+  		if (_trans != -1337) translation = _trans;
+  
+  	}
