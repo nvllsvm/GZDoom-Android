@@ -9,10 +9,6 @@ android {
         targetSdkVersion 26
         versionCode 3
         versionName "0.2.1"
-
-        ndk {
-            abiFilters 'armeabi-v7a'
-        }
     }
 
     sourceSets.main {
@@ -29,12 +25,6 @@ android {
     tasks.whenTaskAdded { task ->
         if (task.name.equals("compileReleaseNdk")) {
             task.enabled = false
-        }
-    }
-
-    externalNativeBuild {
-        ndkBuild {
-            path "src/main/jni/Android.mk"
         }
     }
 }

@@ -4,3 +4,6 @@
 [submodule "doom/src/main/jni/openal-soft-android"]
 	path = doom/src/main/jni/openal-soft-android
 	url = https://github.com/nvllsvm/openal-soft-android.git
+[submodule "doom/src/main/jni/gzdoom"]
+	path = doom/src/main/jni/gzdoom
+	url = https://github.com/coelckers/gzdoom.git
