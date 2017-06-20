@@ -4,7 +4,7 @@ LOCAL_PATH := $(call my-dir)/src
 include $(CLEAR_VARS)
 
 
-LOCAL_MODULE    := gzdoom_dev
+LOCAL_MODULE    := gzdoom
 
 #-DNO_FMOD
 LOCAL_CPPFLAGS :=  -O2 -DONLY_GPL -DHAVE_FLUIDSYNTH  -Wformat -Werror=format-security  -fexceptions -fpermissive -DANDROID -DUSE_GLES -Dstricmp=strcasecmp -Dstrnicmp=strncasecmp -D__forceinline=inline -DNO_GTK -DDISABLE_SSE -fsigned-char

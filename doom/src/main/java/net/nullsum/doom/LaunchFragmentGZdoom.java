@@ -181,7 +181,6 @@ public class LaunchFragmentGZdoom extends Fragment{
         //if (!extrawad.exists())
         {
             Utils.copyAsset(getActivity(),"gzdoom.pk3",base);
-            Utils.copyAsset(getActivity(),"gzdoom_dev.pk3",base);
             Utils.copyAsset(getActivity(),"gzdoom.sf2",base);
             //Utils.copyAsset(getActivity(),"lights_dt.pk3",base);
             //Utils.copyAsset(getActivity(),"brightmaps_dt.pk3",base);

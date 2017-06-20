@@ -23,7 +23,7 @@ public class NativeLib implements ControlInterface {
 			System.loadLibrary("fmod");
 			System.loadLibrary("openal");
 			//System.loadLibrary("output_sdl");
-            System.loadLibrary("gzdoom_dev");
+            System.loadLibrary("gzdoom");
 
 		}
 		catch (UnsatisfiedLinkError ule) {
