@@ -1,22 +1,6 @@
 *** doom/src/main/jni/gzdoom/src/gl/models/gl_models_md2.cpp	2017-06-18 23:15:10.663307124 -0400
 --- doom/src/main/jni/Doom/gzdoom_2/src/gl/models/gl_models_md2.cpp	2017-06-18 23:34:13.350582049 -0400
 ***************
-*** 43,55 ****
-  #include "sc_man.h"
-  #include "m_crc32.h"
-  
-- #include "gl/renderer/gl_renderer.h"
-  #include "gl/renderer/gl_renderstate.h"
-  #include "gl/scene/gl_drawinfo.h"
-  #include "gl/models/gl_models.h"
-  #include "gl/textures/gl_material.h"
-  #include "gl/shaders/gl_shader.h"
-- #include "gl/data/gl_vertexbuffer.h"
-  
-  static float   avertexnormals[NUMVERTEXNORMALS][3] = {
-  #include "tab_anorms.h"
---- 43,53 ----
-***************
 *** 162,169 ****
   		skins[i] = LoadSkin(path, buffer + info.offsetSkins + i*64);
   	}

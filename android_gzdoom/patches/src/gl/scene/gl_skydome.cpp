@@ -1,16 +1,6 @@
 *** doom/src/main/jni/gzdoom/src/gl/scene/gl_skydome.cpp	2017-06-18 23:15:10.666640488 -0400
 --- doom/src/main/jni/Doom/gzdoom_2/src/gl/scene/gl_skydome.cpp	2017-06-18 23:34:13.310581678 -0400
 ***************
-*** 45,51 ****
-  
-  #include "gl/system/gl_interface.h"
-  #include "gl/data/gl_data.h"
-- #include "gl/data/gl_vertexbuffer.h"
-  #include "gl/renderer/gl_lightdata.h"
-  #include "gl/renderer/gl_renderstate.h"
-  #include "gl/scene/gl_drawinfo.h"
---- 45,50 ----
-***************
 *** 64,98 ****
   //
   //-----------------------------------------------------------------------------

@@ -1,21 +1,8 @@
-*** doom/src/main/jni/gzdoom/src/gl/data/gl_vertexbuffer.cpp	2017-06-18 23:15:10.663307124 -0400
---- doom/src/main/jni/Doom/gzdoom_2/src/gl/data/gl_vertexbuffer.cpp	2017-06-18 23:34:13.173913748 -0400
+*** doom/src/main/jni/gzdoom/src/gl/data/gl_vertexbuffer.cpp	2017-06-20 19:11:53.519649563 -0400
+--- doom/src/main/jni/Doom/gzdoom_2/src/gl/data/gl_vertexbuffer.cpp	2017-06-24 18:23:16.935437135 -0400
 ***************
-*** 45,54 ****
-  #include "c_cvars.h"
-  #include "gl/system/gl_interface.h"
-  #include "gl/renderer/gl_renderer.h"
-- #include "gl/shaders/gl_shader.h"
-  #include "gl/data/gl_data.h"
-  #include "gl/data/gl_vertexbuffer.h"
-  
-  
-  //==========================================================================
-  //
---- 45,87 ----
-  #include "c_cvars.h"
-  #include "gl/system/gl_interface.h"
-  #include "gl/renderer/gl_renderer.h"
+*** 49,54 ****
+--- 49,88 ----
   #include "gl/data/gl_data.h"
   #include "gl/data/gl_vertexbuffer.h"
   
@@ -68,7 +55,7 @@
   }
   	
   FVertexBuffer::~FVertexBuffer()
---- 91,108 ----
+--- 92,109 ----
   
   FVertexBuffer::FVertexBuffer()
   {
@@ -104,7 +91,7 @@
   }
   
   //==========================================================================
---- 111,116 ----
+--- 112,117 ----
 ***************
 *** 90,149 ****
   FFlatVertexBuffer::FFlatVertexBuffer()
@@ -167,7 +154,7 @@
   }
   
   //==========================================================================
---- 122,141 ----
+--- 123,142 ----
   FFlatVertexBuffer::FFlatVertexBuffer()
   : FVertexBuffer()
   {
@@ -190,7 +177,7 @@
   //==========================================================================
 ***************
 *** 159,164 ****
---- 151,157 ----
+--- 152,158 ----
   	z = plane.ZatPoint(vt->fx, vt->fy);
   	u = vt->fx/64.f;
   	v = -vt->fy/64.f;
@@ -218,7 +205,7 @@
   	}
   }
   
---- 293,350 ----
+--- 294,351 ----
   //
   //==========================================================================
   
@@ -291,7 +278,7 @@
   	}
   	else if (sectors)
   	{
---- 356,367 ----
+--- 357,368 ----
   
   void FFlatVertexBuffer::CreateVBO()
   {
@@ -306,7 +293,7 @@
   	{
 ***************
 *** 340,346 ****
---- 373,399 ----
+--- 374,400 ----
   			sectors[i].vboheight[1] = sectors[i].vboheight[0] = FIXED_MIN;
   		}
   	}
@@ -368,7 +355,7 @@
   	}
 ! }
 \ No newline at end of file
---- 406,444 ----
+--- 407,445 ----
   {
   	if (sector->GetPlaneTexZ(sector_t::ceiling) != sector->vboheight[sector_t::ceiling])
   	{

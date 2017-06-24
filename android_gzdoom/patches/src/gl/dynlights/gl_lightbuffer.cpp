@@ -1,27 +1,6 @@
 *** doom/src/main/jni/gzdoom/src/gl/dynlights/gl_lightbuffer.cpp	2017-06-18 23:15:10.663307124 -0400
 --- doom/src/main/jni/Doom/gzdoom_2/src/gl/dynlights/gl_lightbuffer.cpp	2017-06-18 23:34:13.203914027 -0400
 ***************
-*** 1,9 ****
-  /*
-! ** gl_lightbuffer.cpp
-! ** Buffer data maintenance for dynamic lights
-  **
-  **---------------------------------------------------------------------------
-! ** Copyright 2014 Christoph Oelckers
-  ** All rights reserved.
-  **
-  ** Redistribution and use in source and binary forms, with or without
---- 1,9 ----
-  /*
-! ** gl_dynlight1.cpp
-! ** dynamic light buffer for shader rendering
-  **
-  **---------------------------------------------------------------------------
-! ** Copyright 2009 Christoph Oelckers
-  ** All rights reserved.
-  **
-  ** Redistribution and use in source and binary forms, with or without
-***************
 *** 38,221 ****
   **
   */

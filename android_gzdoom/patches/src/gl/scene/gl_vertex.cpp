@@ -1,16 +1,6 @@
 *** doom/src/main/jni/gzdoom/src/gl/scene/gl_vertex.cpp	2017-06-18 23:15:10.666640488 -0400
 --- doom/src/main/jni/Doom/gzdoom_2/src/gl/scene/gl_vertex.cpp	2017-06-18 23:34:13.297248223 -0400
 ***************
-*** 45,51 ****
-  #include "gl/renderer/gl_renderer.h"
-  #include "gl/renderer/gl_lightdata.h"
-  #include "gl/data/gl_data.h"
-- #include "gl/data/gl_vertexbuffer.h"
-  #include "gl/dynlights/gl_glow.h"
-  #include "gl/scene/gl_drawinfo.h"
-  #include "gl/scene/gl_portal.h"
---- 45,50 ----
-***************
 *** 54,59 ****
 --- 53,59 ----
   #include "gl/utility/gl_templates.h"

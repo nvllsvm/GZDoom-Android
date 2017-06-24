@@ -1,16 +1,6 @@
 *** doom/src/main/jni/gzdoom/src/gl/scene/gl_weapon.cpp	2017-06-18 23:15:10.666640488 -0400
 --- doom/src/main/jni/Doom/gzdoom_2/src/gl/scene/gl_weapon.cpp	2017-06-18 23:34:13.303914951 -0400
 ***************
-*** 51,57 ****
-  #include "gl/renderer/gl_lightdata.h"
-  #include "gl/renderer/gl_renderstate.h"
-  #include "gl/data/gl_data.h"
-- #include "gl/data/gl_vertexbuffer.h"
-  #include "gl/dynlights/gl_glow.h"
-  #include "gl/scene/gl_drawinfo.h"
-  #include "gl/models/gl_models.h"
---- 51,56 ----
-***************
 *** 70,76 ****
   //
   //==========================================================================

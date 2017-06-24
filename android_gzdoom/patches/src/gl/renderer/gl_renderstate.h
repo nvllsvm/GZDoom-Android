@@ -1,22 +1,14 @@
-*** doom/src/main/jni/gzdoom/src/gl/renderer/gl_renderstate.h	2017-06-18 23:15:10.666640488 -0400
---- doom/src/main/jni/Doom/gzdoom_2/src/gl/renderer/gl_renderstate.h	2017-06-18 23:34:13.280581402 -0400
+*** doom/src/main/jni/gzdoom/src/gl/renderer/gl_renderstate.h	2017-06-20 19:11:53.529649767 -0400
+--- doom/src/main/jni/Doom/gzdoom_2/src/gl/renderer/gl_renderstate.h	2017-06-24 18:34:00.772732083 -0400
 ***************
-*** 2,44 ****
-  #define __GL_RENDERSTATE_H
+*** 10,44 ****
+  #include "r_defs.h"
+  #include "r_data/r_translate.h"
   
-  #include <string.h>
-- #include "gl/system/gl_interface.h"
-- #include "gl/data/gl_data.h"
-- #include "gl/data/gl_matrix.h"
-- #include "gl/textures/gl_material.h"
-  #include "c_cvars.h"
-- #include "r_defs.h"
-- #include "r_data/r_translate.h"
-- 
 - class FVertexBuffer;
 - class FShader;
 - extern TArray<VSMatrix> gl_MatrixStack;
-  
+- 
   EXTERN_CVAR(Bool, gl_direct_state_change)
   
 ! struct FStateVec4
@@ -45,11 +37,9 @@
   };
   
   class FRenderState
---- 2,86 ----
-  #define __GL_RENDERSTATE_H
-  
-  #include <string.h>
-  #include "c_cvars.h"
+--- 10,92 ----
+  #include "r_defs.h"
+  #include "r_data/r_translate.h"
   
   EXTERN_CVAR(Bool, gl_direct_state_change)
   
@@ -185,7 +175,7 @@
   	FRenderState()
   	{
   		Reset();
---- 88,133 ----
+--- 94,139 ----
   	bool mTextureEnabled;
   	bool mFogEnabled;
   	bool mGlowEnabled;
@@ -312,7 +302,7 @@
   
   	void SetTextureMode(int mode)
   	{
---- 135,142 ----
+--- 141,148 ----
   
   	void Reset();
   
@@ -332,7 +322,7 @@
   	}
   
   	void EnableBrightmap(bool on)
---- 163,171 ----
+--- 169,177 ----
   		mGlowEnabled = on;
   	}
   
@@ -363,7 +353,7 @@
   	}
   
   	void SetGlowParams(float *t, float *b)
---- 173,181 ----
+--- 179,187 ----
   		mBrightmapEnabled = on;
   	}
   
@@ -414,7 +404,7 @@
   	}
   
   	void SetFixedColormap(int cm)
---- 184,214 ----
+--- 190,220 ----
   		mGlowBottom.Set(b[0], b[1], b[2], b[3]);
   	}
   
@@ -456,7 +446,7 @@
   	}
   
   	void BlendEquation(int eq)
---- 236,263 ----
+--- 242,269 ----
   
   	void AlphaFunc(int func, float thresh)
   	{
@@ -494,7 +484,7 @@
   		}
   	}
   
---- 268,274 ----
+--- 274,280 ----
   		}
   		else
   		{
@@ -515,4 +505,4 @@
   };
   
   extern FRenderState gl_RenderState;
---- 276,281 ----
+--- 282,287 ----

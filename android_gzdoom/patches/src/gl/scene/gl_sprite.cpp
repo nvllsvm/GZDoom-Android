@@ -1,26 +1,6 @@
 *** doom/src/main/jni/gzdoom/src/gl/scene/gl_sprite.cpp	2017-06-18 23:15:10.666640488 -0400
 --- doom/src/main/jni/Doom/gzdoom_2/src/gl/scene/gl_sprite.cpp	2017-06-18 23:34:13.337248593 -0400
 ***************
-*** 52,58 ****
-  #include "gl/system/gl_cvars.h"
-  #include "gl/renderer/gl_lightdata.h"
-  #include "gl/renderer/gl_renderstate.h"
-- #include "gl/renderer/gl_renderer.h"
-  #include "gl/data/gl_data.h"
-  #include "gl/dynlights/gl_glow.h"
-  #include "gl/scene/gl_drawinfo.h"
---- 52,57 ----
-***************
-*** 61,67 ****
-  #include "gl/shaders/gl_shader.h"
-  #include "gl/textures/gl_material.h"
-  #include "gl/utility/gl_clock.h"
-- #include "gl/data/gl_vertexbuffer.h"
-  
-  CVAR(Bool, gl_usecolorblending, true, CVAR_ARCHIVE|CVAR_GLOBALCONFIG)
-  CVAR(Bool, gl_spritebrightfog, false, CVAR_ARCHIVE|CVAR_GLOBALCONFIG);
---- 60,65 ----
-***************
 *** 112,119 ****
   //==========================================================================
   void GLSprite::Draw(int pass)

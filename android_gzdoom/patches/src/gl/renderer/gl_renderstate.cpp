@@ -1,22 +1,7 @@
-*** doom/src/main/jni/gzdoom/src/gl/renderer/gl_renderstate.cpp	2017-06-18 23:15:10.666640488 -0400
---- doom/src/main/jni/Doom/gzdoom_2/src/gl/renderer/gl_renderstate.cpp	2017-06-18 23:34:13.267247946 -0400
+*** doom/src/main/jni/gzdoom/src/gl/renderer/gl_renderstate.cpp	2017-06-20 19:11:53.529649767 -0400
+--- doom/src/main/jni/Doom/gzdoom_2/src/gl/renderer/gl_renderstate.cpp	2017-06-24 18:30:22.320334094 -0400
 ***************
-*** 38,65 ****
-  **
-  */
-  
-- #include "templates.h"
-  #include "gl/system/gl_system.h"
-  #include "gl/system/gl_interface.h"
-  #include "gl/data/gl_data.h"
-- #include "gl/data/gl_vertexbuffer.h"
-  #include "gl/system/gl_cvars.h"
-  #include "gl/shaders/gl_shader.h"
-  #include "gl/renderer/gl_renderer.h"
-  #include "gl/renderer/gl_renderstate.h"
-  #include "gl/renderer/gl_colormap.h"
-- #include "gl/dynlights//gl_lightbuffer.h"
-  
+*** 53,65 ****
   void gl_SetTextureMode(int type);
   
   FRenderState gl_RenderState;
@@ -30,19 +15,7 @@
   //==========================================================================
   //
   //
---- 38,60 ----
-  **
-  */
-  
-  #include "gl/system/gl_system.h"
-  #include "gl/system/gl_interface.h"
-  #include "gl/data/gl_data.h"
-  #include "gl/system/gl_cvars.h"
-  #include "gl/shaders/gl_shader.h"
-  #include "gl/renderer/gl_renderer.h"
-  #include "gl/renderer/gl_renderstate.h"
-  #include "gl/renderer/gl_colormap.h"
-  
+--- 53,63 ----
   void gl_SetTextureMode(int type);
   
   FRenderState gl_RenderState;
@@ -221,7 +194,7 @@
   }
   
   
---- 64,256 ----
+--- 67,259 ----
   void FRenderState::Reset()
   {
   	mTextureEnabled = true;
@@ -465,7 +438,7 @@
 - 	activeShader->muLightIndex.Set(index);
 - }
 \ No newline at end of file
---- 260,359 ----
+--- 263,362 ----
   //
   //==========================================================================
   

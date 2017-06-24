@@ -1,16 +1,6 @@
 *** doom/src/main/jni/gzdoom/src/gl/system/gl_framebuffer.cpp	2017-06-18 23:15:10.666640488 -0400
 --- doom/src/main/jni/Doom/gzdoom_2/src/gl/system/gl_framebuffer.cpp	2017-06-18 23:34:13.210580755 -0400
 ***************
-*** 54,60 ****
-  #include "gl/system/gl_interface.h"
-  #include "gl/system/gl_framebuffer.h"
-  #include "gl/renderer/gl_renderer.h"
-- #include "gl/renderer/gl_renderstate.h"
-  #include "gl/renderer/gl_lightdata.h"
-  #include "gl/data/gl_data.h"
-  #include "gl/textures/gl_hwtexture.h"
---- 54,59 ----
-***************
 *** 74,82 ****
   
   FGLRenderer *GLRenderer;

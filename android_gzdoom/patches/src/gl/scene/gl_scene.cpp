@@ -1,26 +1,6 @@
 *** doom/src/main/jni/gzdoom/src/gl/scene/gl_scene.cpp	2017-06-18 23:15:10.666640488 -0400
 --- doom/src/main/jni/Doom/gzdoom_2/src/gl/scene/gl_scene.cpp	2017-06-18 23:34:13.340581957 -0400
 ***************
-*** 57,63 ****
-  #include "p_local.h"
-  #include "gl/gl_functions.h"
-  
-- #include "gl/dynlights/gl_lightbuffer.h"
-  #include "gl/system/gl_interface.h"
-  #include "gl/system/gl_framebuffer.h"
-  #include "gl/system/gl_cvars.h"
---- 57,62 ----
-***************
-*** 66,71 ****
---- 65,71 ----
-  #include "gl/data/gl_data.h"
-  #include "gl/data/gl_vertexbuffer.h"
-  #include "gl/dynlights/gl_dynlight.h"
-+ #include "gl/dynlights/gl_lightbuffer.h"
-  #include "gl/models/gl_models.h"
-  #include "gl/scene/gl_clipper.h"
-  #include "gl/scene/gl_drawinfo.h"
-***************
 *** 85,91 ****
   CVAR(Bool, gl_no_skyclear, false, CVAR_ARCHIVE|CVAR_GLOBALCONFIG)
   CVAR(Float, gl_mask_threshold, 0.5f,CVAR_ARCHIVE|CVAR_GLOBALCONFIG)

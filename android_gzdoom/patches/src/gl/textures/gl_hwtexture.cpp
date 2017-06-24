@@ -1,23 +1,6 @@
 *** doom/src/main/jni/gzdoom/src/gl/textures/gl_hwtexture.cpp	2017-06-18 23:15:10.669973853 -0400
 --- doom/src/main/jni/Doom/gzdoom_2/src/gl/textures/gl_hwtexture.cpp	2017-06-18 23:34:13.247247761 -0400
 ***************
-*** 4,10 ****
-  ** containers for the various translations a texture can have.
-  **
-  **---------------------------------------------------------------------------
-! ** Copyright 2004-2014 Christoph Oelckers
-  ** All rights reserved.
-  **
-  ** Redistribution and use in source and binary forms, with or without
---- 4,10 ----
-  ** containers for the various translations a texture can have.
-  **
-  **---------------------------------------------------------------------------
-! ** Copyright 2004-2005 Christoph Oelckers
-  ** All rights reserved.
-  **
-  ** Redistribution and use in source and binary forms, with or without
-***************
 *** 54,59 ****
 --- 54,60 ----
   

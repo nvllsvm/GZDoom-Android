@@ -1,17 +1,6 @@
 *** doom/src/main/jni/gzdoom/src/gl/data/gl_vertexbuffer.h	2017-06-18 23:15:10.663307124 -0400
 --- doom/src/main/jni/Doom/gzdoom_2/src/gl/data/gl_vertexbuffer.h	2017-06-18 23:34:13.163913657 -0400
 ***************
-*** 2,9 ****
-  #define __VERTEXBUFFER_H
-  
-  #include "tarray.h"
-- #include "gl/utility/gl_clock.h"
-- #include "gl/system/gl_interface.h"
-  
-  struct vertex_t;
-  struct secplane_t;
---- 2,7 ----
-***************
 *** 15,42 ****
   {
   protected:

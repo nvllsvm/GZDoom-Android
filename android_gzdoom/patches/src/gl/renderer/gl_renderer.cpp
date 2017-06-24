@@ -1,11 +1,11 @@
-*** doom/src/main/jni/gzdoom/src/gl/renderer/gl_renderer.cpp	2017-06-18 23:15:10.666640488 -0400
---- doom/src/main/jni/Doom/gzdoom_2/src/gl/renderer/gl_renderer.cpp	2017-06-18 23:34:13.270581310 -0400
+*** doom/src/main/jni/gzdoom/src/gl/renderer/gl_renderer.cpp	2017-06-20 19:11:53.529649767 -0400
+--- doom/src/main/jni/Doom/gzdoom_2/src/gl/renderer/gl_renderer.cpp	2017-06-24 08:07:14.138255754 -0400
 ***************
 *** 52,73 ****
   
   #include "gl/system/gl_interface.h"
   #include "gl/system/gl_framebuffer.h"
-! #include "gl/system/gl_cvars.h"
+- #include "gl/system/gl_cvars.h"
   #include "gl/renderer/gl_renderer.h"
   #include "gl/renderer/gl_lightdata.h"
   #include "gl/renderer/gl_renderstate.h"
@@ -24,11 +24,10 @@
   
   //===========================================================================
   // 
---- 52,72 ----
+--- 52,71 ----
   
   #include "gl/system/gl_interface.h"
   #include "gl/system/gl_framebuffer.h"
-! #include "gl/system/gl_threads.h"
   #include "gl/renderer/gl_renderer.h"
   #include "gl/renderer/gl_lightdata.h"
   #include "gl/renderer/gl_renderstate.h"
@@ -48,7 +47,7 @@
   // 
 ***************
 *** 75,80 ****
---- 74,81 ----
+--- 73,80 ----
   //
   //===========================================================================
   
@@ -70,7 +69,7 @@
   }
   
   void FGLRenderer::Initialize()
---- 93,101 ----
+--- 92,100 ----
   	mViewVector = FVector2(0,0);
   	mCameraPos = FVector3(0,0,0);
   	mVBO = NULL;
@@ -113,7 +112,7 @@
   	if (mFBID != 0) glDeleteFramebuffers(1, &mFBID);
   }
   
---- 103,130 ----
+--- 102,129 ----
   	glpart2 = FTexture::CreateTexture(Wads.GetNumForFullName("glstuff/glpart2.png"), FTexture::TEX_MiscPatch);
   	glpart = FTexture::CreateTexture(Wads.GetNumForFullName("glstuff/glpart.png"), FTexture::TEX_MiscPatch);
   	mirrortexture = FTexture::CreateTexture(Wads.GetNumForFullName("glstuff/mirror.png"), FTexture::TEX_MiscPatch);
@@ -153,7 +152,7 @@
   }
   
   //===========================================================================
---- 213,225 ----
+--- 212,224 ----
   
   bool FGLRenderer::StartOffscreen()
   {
@@ -176,7 +175,7 @@
   }
   
   //===========================================================================
---- 230,239 ----
+--- 229,238 ----
   
   void FGLRenderer::EndOffscreen()
   {
@@ -199,7 +198,7 @@
   	}
   	return NULL;
   }
---- 244,253 ----
+--- 243,252 ----
   
   unsigned char *FGLRenderer::GetTextureBuffer(FTexture *tex, int &w, int &h)
   {
@@ -237,7 +236,7 @@
   	gl_RenderState.EnableTexture(true);
   
   	glViewport(0, (trueHeight - height) / 2, width, height); 
---- 270,298 ----
+--- 269,297 ----
   	int borderHeight = (trueHeight - height) / 2;
   
   	glViewport(0, 0, width, trueHeight);
@@ -314,7 +313,7 @@
   		gl_RenderState.SetTextureMode(TM_OPAQUE);
   	}
   	
---- 312,358 ----
+--- 311,357 ----
   	double y = parms.y - parms.top * yscale;
   	double w = parms.destwidth;
   	double h = parms.destheight;
@@ -381,7 +380,7 @@
   	// scissor test doesn't use the current viewport for the coordinates, so use real screen coordinates
   	int btm = (SCREENHEIGHT - screen->GetHeight()) / 2;
   	btm = SCREENHEIGHT - btm;
---- 373,389 ----
+--- 372,388 ----
   		u2 = float(u2 - (parms.texwidth - parms.windowright) / parms.texwidth);
   	}
   
@@ -434,7 +433,7 @@
   	glScissor(0, 0, screen->GetWidth(), screen->GetHeight());
   	glDisable(GL_SCISSOR_TEST);
   	gl_RenderState.SetTextureMode(TM_MODULATE);
---- 392,439 ----
+--- 391,438 ----
   	int space = (static_cast<OpenGLFrameBuffer*>(screen)->GetTrueHeight()-screen->GetHeight())/2;
   	glScissor(parms.lclip, btm - parms.dclip + space, parms.rclip - parms.lclip, parms.dclip - parms.uclip);
   	
@@ -499,7 +498,7 @@
   	gl_RenderState.EnableTexture(true);
   }
   
---- 450,461 ----
+--- 449,460 ----
   {
   	PalEntry p = color? (PalEntry)color : GPalette.BaseColors[palcolor];
   	gl_RenderState.EnableTexture(false);
@@ -527,7 +526,7 @@
   	gl_RenderState.EnableTexture(true);
   }
   
---- 468,478 ----
+--- 467,477 ----
   {
   	PalEntry p = color? (PalEntry)color : GPalette.BaseColors[palcolor];
   	gl_RenderState.EnableTexture(false);
@@ -560,7 +559,7 @@
   	gl_RenderState.EnableTexture(true);
   }
   
---- 484,508 ----
+--- 483,507 ----
   
   void FGLRenderer::Dim(PalEntry color, float damount, int x1, int y1, int w, int h)
   {
@@ -599,7 +598,7 @@
   	
   	// scaling is not used here.
   	if (!local_origin)
---- 515,525 ----
+--- 514,524 ----
   {
   	float fU1,fU2,fV1,fV2;
   
@@ -628,7 +627,7 @@
   }
   
   //==========================================================================
---- 536,549 ----
+--- 535,548 ----
   		fU2 = float(right-left) / src->GetWidth();
   		fV2 = float(bottom-top) / src->GetHeight();
   	}
@@ -652,7 +651,7 @@
   
   	if (gltexture == NULL)
   	{
---- 599,605 ----
+--- 598,604 ----
   		return;
   	}
   
@@ -671,7 +670,7 @@
   
   	int i;
   	float rot = float(rotation * M_PI / float(1u << 31));
---- 609,619 ----
+--- 608,618 ----
   	FColormap cm;
   	cm = colormap;
   
@@ -693,7 +692,7 @@
   	for (i = 0; i < npoints; ++i)
   	{
   		float u = points[i].X - 0.5f - ox;
---- 633,639 ----
+--- 632,638 ----
   	float oy = float(originy);
   
   	gl_RenderState.Apply();
@@ -712,7 +711,7 @@
 ! 	GLRenderer->mVBO->RenderCurrent(ptr, GL_TRIANGLE_FAN);
   }
   
---- 644,652 ----
+--- 643,651 ----
   			u = t * cosrot - v * sinrot;
   			v = v * cosrot + t * sinrot;
   		}

@@ -1,20 +1,6 @@
 *** doom/src/main/jni/gzdoom/src/gl/scene/gl_portal.cpp	2017-06-18 23:15:10.666640488 -0400
 --- doom/src/main/jni/Doom/gzdoom_2/src/gl/scene/gl_portal.cpp	2017-06-18 23:34:13.307248315 -0400
 ***************
-*** 50,60 ****
-  #include "gl/system/gl_framebuffer.h"
-  #include "gl/system/gl_cvars.h"
-  #include "gl/renderer/gl_lightdata.h"
-- #include "gl/renderer/gl_renderer.h"
-  #include "gl/renderer/gl_renderstate.h"
-  #include "gl/dynlights/gl_glow.h"
-  #include "gl/data/gl_data.h"
-- #include "gl/data/gl_vertexbuffer.h"
-  #include "gl/scene/gl_clipper.h"
-  #include "gl/scene/gl_drawinfo.h"
-  #include "gl/scene/gl_portal.h"
---- 50,58 ----
-***************
 *** 79,85 ****
   EXTERN_CVAR(Int, r_mirror_recursions)
   

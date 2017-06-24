@@ -11,25 +11,6 @@ LOCAL_CPPFLAGS :=  -O2 -DONLY_GPL -DHAVE_FLUIDSYNTH  -Wformat -Werror=format-sec
 
 #$(TOP_DIR)/GL \
 
-NON_GPL_SOURCE := \
-	r_poylmost.cpp 	\
-	r_bsp.cpp 	\
-	r_segs.cpp 	\
-	r_plane.cpp \
-	r_things.cpp \
-	r_draw.cpp \
-	r_drawt.cpp \
-	r_swrenderer.cpp \
-	r_3dfloors.cpp \
-	oplsynth/fmopl.cpp \
-	oplsynth/mlopl.cpp \
-	oplsynth/mlopl_io.cpp \
-	oplsynth/music_opldumper_mididevice.cpp \
-	oplsynth/music_opl_mididevice.cpp \
-	oplsynth/opl_mus_player.cpp \
-	oplsynth/dosbox/opl.cpp \
-	oplsynth/OPL3.cpp \
-	sound/music_mus_opl.cpp \
 	
 LOCAL_C_INCLUDES := \
 $(TOP_DIR)/ \
@@ -277,6 +258,7 @@ MAIN_SRC_FILES = \
 	menu/playermenu.cpp \
 	menu/readthis.cpp \
 	menu/videomenu.cpp \
+	gl/data/gl_matrix.cpp \
 	gl/data/gl_sections.cpp \
 	gl/data/gl_data.cpp \
 	gl/data/gl_portaldata.cpp \
@@ -418,6 +400,23 @@ MAIN_SRC_FILES = \
 	r_data/renderstyle.cpp \
 	r_data/r_interpolate.cpp \
 	r_data/r_translate.cpp \
+	r_bsp.cpp 	\
+	r_segs.cpp 	\
+	r_plane.cpp \
+	r_things.cpp \
+	r_draw.cpp \
+	r_drawt.cpp \
+	r_swrenderer.cpp \
+	r_3dfloors.cpp \
+	oplsynth/fmopl.cpp \
+	oplsynth/mlopl.cpp \
+	oplsynth/mlopl_io.cpp \
+	oplsynth/music_opldumper_mididevice.cpp \
+	oplsynth/music_opl_mididevice.cpp \
+	oplsynth/opl_mus_player.cpp \
+	oplsynth/dosbox/opl.cpp \
+	oplsynth/OPL3.cpp \
+	sound/music_mus_opl.cpp \
 	zzautozend.cpp \ 
 
 

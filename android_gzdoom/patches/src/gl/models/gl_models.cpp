@@ -1,16 +1,6 @@
 *** doom/src/main/jni/gzdoom/src/gl/models/gl_models.cpp	2017-06-18 23:15:10.663307124 -0400
 --- doom/src/main/jni/Doom/gzdoom_2/src/gl/models/gl_models.cpp	2017-06-18 23:34:13.363915506 -0400
 ***************
-*** 59,65 ****
-  #include "gl/utility/gl_geometric.h"
-  #include "gl/utility/gl_convert.h"
-  #include "gl/renderer/gl_renderstate.h"
-- #include "gl/shaders/gl_shader.h"
-  
-  static inline float GetTimeFloat()
-  {
---- 59,64 ----
-***************
 *** 69,74 ****
 --- 68,74 ----
   CVAR(Bool, gl_interpolate_model_frames, true, CVAR_ARCHIVE)

@@ -1,20 +1,6 @@
 *** doom/src/main/jni/gzdoom/src/gl/models/gl_models.h	2017-06-18 23:15:10.663307124 -0400
 --- doom/src/main/jni/Doom/gzdoom_2/src/gl/models/gl_models.h	2017-06-18 23:34:13.353915413 -0400
 ***************
-*** 2,12 ****
-  #define __GL_MODELS_H_
-  
-  #include "gl/utility/gl_geometric.h"
-- #include "gl/data/gl_vertexbuffer.h"
-  #include "p_pspr.h"
-  #include "r_data/voxels.h"
-  
-- 
-  #define MAX_LODS			4
-  
-  enum { VX, VZ, VY };
---- 2,10 ----
-***************
 *** 29,36 ****
   
   	virtual bool Load(const char * fn, int lumpnum, const char * buffer, int length) = 0;

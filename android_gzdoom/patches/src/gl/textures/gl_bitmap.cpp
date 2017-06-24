@@ -1,16 +1,6 @@
 *** doom/src/main/jni/gzdoom/src/gl/textures/gl_bitmap.cpp	2017-06-18 23:15:10.666640488 -0400
 --- doom/src/main/jni/Doom/gzdoom_2/src/gl/textures/gl_bitmap.cpp	2017-06-18 23:34:13.233914304 -0400
 ***************
-*** 42,48 ****
-  #include "gl/renderer/gl_lightdata.h"
-  #include "gl/textures/gl_translate.h"
-  #include "gl/textures/gl_bitmap.h"
-- #include "gl/system/gl_interface.h"
-  
-  //===========================================================================
-  // 
---- 42,47 ----
-***************
 *** 51,75 ****
   //
   //===========================================================================

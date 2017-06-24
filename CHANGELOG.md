@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## Next
+
+* Readded OPL synth emulation
+
 ## Version 0.2.1
 
 _2017-06-15_

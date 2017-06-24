@@ -1,21 +1,6 @@
 *** doom/src/main/jni/gzdoom/src/gl/scene/gl_walls_draw.cpp	2017-06-18 23:15:10.666640488 -0400
 --- doom/src/main/jni/Doom/gzdoom_2/src/gl/scene/gl_walls_draw.cpp	2017-06-18 23:34:13.343915321 -0400
 ***************
-*** 48,59 ****
-  #include "gl/system/gl_cvars.h"
-  #include "gl/renderer/gl_lightdata.h"
-  #include "gl/renderer/gl_renderstate.h"
-- #include "gl/renderer/gl_renderer.h"
-  #include "gl/data/gl_data.h"
-- #include "gl/data/gl_vertexbuffer.h"
-  #include "gl/dynlights/gl_dynlight.h"
-  #include "gl/dynlights/gl_glow.h"
-- #include "gl/dynlights/gl_lightbuffer.h"
-  #include "gl/scene/gl_drawinfo.h"
-  #include "gl/scene/gl_portal.h"
-  #include "gl/shaders/gl_shader.h"
---- 48,56 ----
-***************
 *** 65,172 ****
   
   //==========================================================================
