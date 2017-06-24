@@ -1,5 +1,5 @@
-*** doom/src/main/jni/gzdoom/src/gl/textures/gl_texture.cpp	2017-06-18 23:15:10.669973853 -0400
---- doom/src/main/jni/Doom/gzdoom_2/src/gl/textures/gl_texture.cpp	2017-06-18 23:34:13.263914580 -0400
+*** doom/src/main/jni/gzdoom/src/gl/textures/gl_texture.cpp	2017-06-20 19:11:53.539649973 -0400
+--- doom/src/main/jni/Doom/gzdoom_2/src/gl/textures/gl_texture.cpp	2017-06-23 21:24:51.665462769 -0400
 ***************
 *** 52,58 ****
   #include "gl/renderer/gl_renderer.h"
@@ -28,22 +28,16 @@
   
   CCMD(gl_flush)
 ***************
-*** 69,78 ****
-  	if (GLRenderer != NULL) GLRenderer->FlushTextures();
-  }
-  
-! CUSTOM_CVAR(Int, gl_texture_filter, 4, CVAR_ARCHIVE|CVAR_GLOBALCONFIG|CVAR_NOINITCALL)
+*** 72,78 ****
+  CUSTOM_CVAR(Int, gl_texture_filter, 4, CVAR_ARCHIVE|CVAR_GLOBALCONFIG|CVAR_NOINITCALL)
   {
   	if (self < 0 || self > 5) self=4;
 ! 	if (GLRenderer != NULL && GLRenderer->mSamplerManager != NULL) GLRenderer->mSamplerManager->SetTextureFilterMode();
   }
   
   CUSTOM_CVAR(Int, gl_texture_format, 0, CVAR_ARCHIVE|CVAR_GLOBALCONFIG|CVAR_NOINITCALL)
---- 68,77 ----
-  	if (GLRenderer != NULL) GLRenderer->FlushTextures();
-  }
-  
-! CUSTOM_CVAR(Int, gl_texture_filter, 0, CVAR_ARCHIVE|CVAR_GLOBALCONFIG|CVAR_NOINITCALL)
+--- 71,77 ----
+  CUSTOM_CVAR(Int, gl_texture_filter, 4, CVAR_ARCHIVE|CVAR_GLOBALCONFIG|CVAR_NOINITCALL)
   {
   	if (self < 0 || self > 5) self=4;
 ! 	if (GLRenderer != NULL) GLRenderer->FlushTextures();
