@@ -1,2 +1,2 @@
 #!/bin/sh
-diff -cr doom/src/main/jni/gzdoom/"$1" doom/src/main/jni/Doom/gzdoom_2/"$1" > android_gzdoom/patches/"$1"
+diff -BZcr doom/src/main/jni/gzdoom/src/"$1" doom/src/main/jni/Doom/gzdoom_2/src/"$1" > android_gzdoom/patches/src/"$1"

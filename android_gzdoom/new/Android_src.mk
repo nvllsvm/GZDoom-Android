@@ -48,16 +48,16 @@ $(TOP_DIR)/MobileTouchControls  \
 PLT_SRC_FILES = \
 android/android-jni.cpp \
 android/in_android.cpp \
-	android/hardware.cpp \
-	android/i_cd.cpp \
-	android/i_input.cpp \
-	android/i_joystick.cpp \
-	android/i_main.cpp \
-	android/i_movie.cpp \
-	android/i_system.cpp \
-	android/sdlvideo.cpp \
-	android/sdlglvideo.cpp \
-	android/st_start.cpp \
+sdl/hardware.cpp \
+sdl/i_cd.cpp \
+sdl/i_input.cpp \
+sdl/i_joystick.cpp \
+sdl/i_main.cpp \
+sdl/i_movie.cpp \
+sdl/i_system.cpp \
+sdl/sdlvideo.cpp \
+sdl/sdlglvideo.cpp \
+sdl/st_start.cpp \
 
 MAIN_SRC_FILES = \
 	__autostart.cpp \
