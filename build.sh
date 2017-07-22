@@ -1,17 +1,17 @@
 #!/bin/bash
 
-if [[ $1 == 'fresh' ]]; then
+if [[ $1 != 'noclean' ]]; then
     rm -r doom/.externalNativeBuild
     rm -r doom/build
     rm -r doom/src/main/obj
-    rm -r doom/src/main/jni/Doom/gzdoom_2
-    cp -r doom/src/main/jni/gzdoom doom/src/main/jni/Doom/gzdoom_2
-    cp -r android_gzdoom/new/*mk doom/src/main/jni/Doom/gzdoom_2
-    cp -r android_gzdoom/new/src/android doom/src/main/jni/Doom/gzdoom_2/src
-    cp -r android_gzdoom/new/src/sound/fmodsound_studio.* doom/src/main/jni/Doom/gzdoom_2/src/sound
-    cp -r android_gzdoom/new/src/gl/api doom/src/main/jni/Doom/gzdoom_2/src/gl
-    cp -r android_gzdoom/new/src/gl/data/gl_sections.cpp doom/src/main/jni/Doom/gzdoom_2/src/gl/data
-    cp -r android_gzdoom/new/src/gl/data/gl_sections.h doom/src/main/jni/Doom/gzdoom_2/src/gl/data
+    rm -r doom/src/main/jni/gzdoom_android
+    cp -r doom/src/main/jni/gzdoom doom/src/main/jni/gzdoom_android
+    cp -r android_gzdoom/new/*mk doom/src/main/jni/gzdoom_android
+    cp -r android_gzdoom/new/src/android doom/src/main/jni/gzdoom_android/src
+    cp -r android_gzdoom/new/src/sound/fmodsound_studio.* doom/src/main/jni/gzdoom_android/src/sound
+    cp -r android_gzdoom/new/src/gl/api doom/src/main/jni/gzdoom_android/src/gl
+    cp -r android_gzdoom/new/src/gl/data/gl_sections.cpp doom/src/main/jni/gzdoom_android/src/gl/data
+    cp -r android_gzdoom/new/src/gl/data/gl_sections.h doom/src/main/jni/gzdoom_android/src/gl/data
 fi
 
 patches=$(find android_gzdoom/patches -type f)
@@ -20,7 +20,7 @@ temp_file=/tmp/gzdoom_android_source
 while read -r line; do
     patch_file=$line
     relative_name=$(echo $line | cut -c24-)
-    target_file="doom/src/main/jni/Doom/gzdoom_2/$relative_name"
+    target_file="doom/src/main/jni/gzdoom_android/$relative_name"
     source_file="doom/src/main/jni/gzdoom/$relative_name"
 
     cp $source_file $temp_file

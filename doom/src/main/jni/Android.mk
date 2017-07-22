@@ -6,7 +6,7 @@ LOCAL_PATH := $(call my-dir)
 
 include $(TOP_DIR)/GL/Android.mk
 include $(TOP_DIR)/jpeg8d/jni/Android.mk
-include $(TOP_DIR)/Doom/gzdoom_2/Android.mk
+include $(TOP_DIR)/gzdoom_android/Android.mk
 
 include $(TOP_DIR)/FMOD_studio/Android.mk
 include $(TOP_DIR)/fluidsynth/Android.mk
