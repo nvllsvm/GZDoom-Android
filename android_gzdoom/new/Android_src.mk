@@ -259,7 +259,6 @@ MAIN_SRC_FILES = \
 	menu/readthis.cpp \
 	menu/videomenu.cpp \
 	gl/data/gl_matrix.cpp \
-	gl/data/gl_sections.cpp \
 	gl/data/gl_data.cpp \
 	gl/data/gl_portaldata.cpp \
 	gl/data/gl_setup.cpp \
