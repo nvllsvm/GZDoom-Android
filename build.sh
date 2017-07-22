@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [[ $1 == 'fresh' ]]; then
     rm -r doom/.externalNativeBuild
