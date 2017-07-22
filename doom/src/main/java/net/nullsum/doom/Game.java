@@ -34,8 +34,6 @@ import com.bda.controller.StateEvent;
 import com.beloko.libsdl.SDLLib;
 import net.nullsum.doom.AppSettings;
 import net.nullsum.doom.BestEglChooser;
-import net.nullsum.doom.CDAudioPlayer;
-import net.nullsum.doom.FPSLimit;
 import net.nullsum.doom.MyGLSurfaceView;
 import net.nullsum.doom.Utils;
 import com.beloko.touchcontrols.ControlInterpreter;
@@ -152,7 +150,6 @@ public class Game extends Activity implements Handler.Callback
 	@Override
 	protected void onPause() {
 		Log.i(LOG, "onPause" );
-		CDAudioPlayer.onPause();
 		SDLLib.onPause();
 		mogaController.onPause();
 		super.onPause();
@@ -162,7 +159,6 @@ public class Game extends Activity implements Handler.Callback
 	protected void onResume() {
 
 		Log.i(LOG, "onResume" );
-		CDAudioPlayer.onResume();
 		SDLLib.onResume();
 		mogaController.onResume();
 		super.onResume();
@@ -276,9 +272,6 @@ public class Game extends Activity implements Handler.Callback
 
 		//// new Renderer interface
 		int notifiedflags;
-
-		FPSLimit fpsLimit;
-
 
 		public void onDrawFrame(GL10 gl) {
 

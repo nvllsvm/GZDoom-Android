@@ -56,8 +56,6 @@ public class AppSettings {
         vibrate =  getBoolOption(ctx, "vibrate", true);
 
         immersionMode = getBoolOption(ctx, "immersion_mode", true);
-
-        net.nullsum.doom.CDAudioPlayer.initFiles(musicBaseDir);
     }
 
     public static String getQuakeFullDir()
