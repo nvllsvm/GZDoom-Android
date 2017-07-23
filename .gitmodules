@@ -10,3 +10,6 @@
 [submodule "doom/src/main/jni/MobileTouchControls"]
 	path = doom/src/main/jni/MobileTouchControls
 	url = https://github.com/nvllsvm/MobileTouchControls.git
+[submodule "TouchControls"]
+	path = TouchControls
+	url = https://github.com/nvllsvm/TouchControls.git
