@@ -150,6 +150,7 @@ public class Game extends Activity implements Handler.Callback
 	@Override
 	protected void onPause() {
 		Log.i(LOG, "onPause" );
+        SDLLib.nativePause();
 		SDLLib.onPause();
 		mogaController.onPause();
 		super.onPause();
@@ -159,6 +160,7 @@ public class Game extends Activity implements Handler.Callback
 	protected void onResume() {
 
 		Log.i(LOG, "onResume" );
+        SDLLib.nativeResume();
 		SDLLib.onResume();
 		mogaController.onResume();
 		super.onResume();
