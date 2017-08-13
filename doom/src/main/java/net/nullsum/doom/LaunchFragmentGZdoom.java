@@ -339,10 +339,7 @@ public class LaunchFragmentGZdoom extends Fragment{
                 view.setBackgroundResource(0);
 
             TextView title = (TextView)view.findViewById(R.id.title_textview);
-            title.setText(game.getTitle());
-
-            TextView file = (TextView)view.findViewById(R.id.file_textview);
-            file.setText(game.getFile());
+            title.setText(game.getFile());
 
             return view;
         }
