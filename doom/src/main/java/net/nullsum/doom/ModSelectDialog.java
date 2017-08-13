@@ -289,21 +289,6 @@ public class ModSelectDialog {
 			else
 				view.setBackgroundResource(0);
 
-			ImageView iv = (ImageView)view.findViewById(R.id.imageview);
-
-			//iv.setImageResource(game.getImage());
-
-/*			if (filesArray.get(position).startsWith("/"))
-				iv.setImageResource(R.drawable.file_folder);
-			else if (filesArray.get(position).endsWith(".pk3"))
-				iv.setImageResource(R.drawable.file_zip);
-			else if (filesArray.get(position).endsWith(".pk7"))
-				iv.setImageResource(R.drawable.file_zip);
-			else
-				iv.setImageResource(R.drawable.file_unknown);
-                */
-
-
 			TextView title = (TextView)view.findViewById(R.id.name_textview);
 
 			title.setText(filesArray.get(position));

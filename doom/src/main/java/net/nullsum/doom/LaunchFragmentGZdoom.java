@@ -331,16 +331,12 @@ public class LaunchFragmentGZdoom extends Fragment{
             else
                 view = convertView;
 
-            ImageView iv = (ImageView)view.findViewById(R.id.imageview);
             DoomWad game = games.get(position);
 
             if (game.getSelected())
                 view.setBackgroundResource(R.drawable.layout_sel_background);
             else
                 view.setBackgroundResource(0);
-
-            //iv.setImageResource(game.getImage());
-            iv.setImageBitmap(Utils.decodeSampledBitmapFromResource(getResources(),game.getImage(),200,100));
 
             TextView title = (TextView)view.findViewById(R.id.title_textview);
             title.setText(game.getTitle());
