@@ -38,4 +38,4 @@ while read -r line; do
 done <<< $patches
 
 
-NDK_PROJECT_PATH=doom/src/main ndk-build
+NDK_PROJECT_PATH=doom/src/main ndk-build $@
