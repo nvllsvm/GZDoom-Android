@@ -9,17 +9,14 @@ LOCAL_MODULE    := gme_dev
 
 LOCAL_CFLAGS :=   -O2  
 
-LOCAL_LDLIBS += -llog
-
 LOCAL_CFLAGS += -march=armv7-a -mfloat-abi=softfp
-LOCAL_LDLIBS += -Wl,--fix-cortex-a8
 
 LOCAL_C_INCLUDES :=  $(LOCAL_PATH)/gme/
 
 
 
 LOCAL_SRC_FILES =  	\
-   gme/Blip_Buffer.cpp \ \
+   gme/Blip_Buffer.cpp \
     gme/Classic_Emu.cpp \
     gme/Data_Reader.cpp \
     gme/Dual_Resampler.cpp \
@@ -67,8 +64,6 @@ LOCAL_SRC_FILES =  	\
     gme/Ym2612_Emu.cpp \
 
 #strtof.c \
-
-LOCAL_LDLIBS :=  -ldl -llog
 
 include $(BUILD_STATIC_LIBRARY)
 

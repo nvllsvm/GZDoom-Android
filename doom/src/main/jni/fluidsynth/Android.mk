@@ -8,7 +8,6 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/include
 LOCAL_CFLAGS :=  -O2 -DHAVE_PTHREAD_H -DHAVE_STDLIB_H -DHAVE_STDIO_H -DHAVE_MATH_H -DHAVE_STRING_H -DHAVE_STDARG_H -DHAVE_SYS_SOCKET_H -DHAVE_NETINET_IN_H -DHAVE_ARPA_INET_H -DHAVE_NETINET_TCP_H -DHAVE_UNISTD_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DVERSION=1.0.9
 
 LOCAL_CFLAGS += -march=armv7-a -mfloat-abi=softfp
-LOCAL_LDLIBS += -Wl,--fix-cortex-a8
 
 LOCAL_CPPFLAGS :=$(LOCAL_CFLAGS)  -fexceptions -frtti
 
@@ -23,7 +22,6 @@ fluid_voice.c  		fluid_io.c \
 fluid_dart.c		fluid_ramsfont.c	\
 fluid_defsfont.c	fluid_rev.c
  
-LOCAL_LDLIBS := -llog
 include $(BUILD_STATIC_LIBRARY)
 
 #include $(CLEAR_VARS)

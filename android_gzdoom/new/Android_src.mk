@@ -416,7 +416,7 @@ MAIN_SRC_FILES = \
 	oplsynth/dosbox/opl.cpp \
 	oplsynth/OPL3.cpp \
 	sound/music_mus_opl.cpp \
-	zzautozend.cpp \ 
+	zzautozend.cpp \
 
 
 

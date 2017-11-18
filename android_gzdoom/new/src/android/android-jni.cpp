@@ -646,8 +646,6 @@ JAVA_FUNC(init) ( JNIEnv* env,	jobject thiz,jstring graphics_dir,jint audio_rate
 
 	setenv("HOME", getGamePath(),1);
 
-	putenv("TIMIDITY_CFG=../timidity.cfg");
-
 	chdir(getGamePath());
 
 

@@ -9,10 +9,7 @@ LOCAL_MODULE    := dumb_dev
 
 LOCAL_CFLAGS :=   -O2  -DNEED_ITOA
 
-LOCAL_LDLIBS += -llog
-
 LOCAL_CFLAGS += -march=armv7-a -mfloat-abi=softfp
-LOCAL_LDLIBS += -Wl,--fix-cortex-a8
 
 LOCAL_C_INCLUDES :=   $(LOCAL_PATH)/include/
 
@@ -95,8 +92,6 @@ LOCAL_SRC_FILES =  	\
     src/it/readxm.c \
     src/it/readxm2.c \
     src/it/xmeffect.c \
-
-LOCAL_LDLIBS :=  -ldl -llog
 
 include $(BUILD_STATIC_LIBRARY)
 

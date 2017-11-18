@@ -848,7 +848,6 @@ bool FMODSoundRenderer::Init()
 	}
 	result = Sys->getDriver(&driver);
 
-	result = -1;
 #ifndef NO_FMOD_CAPS_FIX_ME
 #if FMOD_VERSION >= 0x43700
 	// We were built with an FMOD that only returns the control panel frequency

@@ -9,10 +9,7 @@ LOCAL_MODULE    := gdtoa_dev
 
 LOCAL_CFLAGS :=   -O2  
 
-LOCAL_LDLIBS += -llog
-
 LOCAL_CFLAGS += -march=armv7-a -mfloat-abi=softfp -DINFNAN_CHECK -DMULTIPLE_THREADS
-LOCAL_LDLIBS += -Wl,--fix-cortex-a8
 
 LOCAL_C_INCLUDES :=   . $(GZDOOM_TOP_PATH)/src/android/extrafiles 
 
@@ -61,8 +58,6 @@ LOCAL_SRC_FILES =  	\
 	ulp.c \
 
 #strtof.c \
-
-LOCAL_LDLIBS :=  -ldl -llog
 
 include $(BUILD_STATIC_LIBRARY)
 

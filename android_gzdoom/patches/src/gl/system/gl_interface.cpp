@@ -1,5 +1,5 @@
-*** doom/src/main/jni/gzdoom/src/gl/system/gl_interface.cpp	2017-06-18 23:15:10.666640488 -0400
---- doom/src/main/jni/Doom/gzdoom_2/src/gl/system/gl_interface.cpp	2017-06-18 23:34:13.213914119 -0400
+*** doom/src/main/jni/gzdoom/src/gl/system/gl_interface.cpp	2017-11-18 13:47:05.202199760 -0500
+--- doom/src/main/jni/gzdoom_android/src/gl/system/gl_interface.cpp	2017-11-18 14:08:08.729591699 -0500
 ***************
 *** 46,57 ****
 --- 46,75 ----
@@ -117,7 +117,7 @@
 ! 		if (CheckExtension("GL_ARB_shader_storage_buffer_object")) gl.flags |= RFL_SHADER_STORAGE_BUFFER;
 ! 		if (CheckExtension("GL_ARB_buffer_storage")) gl.flags |= RFL_BUFFER_STORAGE;
 ! 	}
-! 	
+  	
 ! 	int v;
 ! 	glGetIntegerv(GL_MAX_FRAGMENT_UNIFORM_COMPONENTS, &v);
 ! 	gl.maxuniforms = v;
@@ -125,7 +125,7 @@
 ! 	gl.maxuniformblock = v;
 ! 	glGetIntegerv(GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT, &v);
 ! 	gl.uniformblockalignment = v;
-! 	
+  	
   	glGetIntegerv(GL_MAX_TEXTURE_SIZE,&gl.max_texturesize);
   	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
   }
@@ -199,27 +199,27 @@
 ! 
 ! 	glDisable(GL_CLIP_PLANE0);
 ! 	glEnable(GL_CLIP_PLANE0);
-! 
+  
 ! 	return;
 ! #endif
   
-! 	// First try the regular function
-! 	glBlendEquation = (PFNGLBLENDEQUATIONPROC)wglGetProcAddress("glBlendEquation");
-! 	// If that fails try the EXT version
-! 	if (!glBlendEquation) glBlendEquation = (PFNGLBLENDEQUATIONPROC)wglGetProcAddress("glBlendEquationEXT");
-! 	// If that fails use a no-op dummy
-! 	if (!glBlendEquation) glBlendEquation = glBlendEquationDummy;
-  
++ 	// First try the regular function
++ 	glBlendEquation = (PFNGLBLENDEQUATIONPROC)wglGetProcAddress("glBlendEquation");
++ 	// If that fails try the EXT version
++ 	if (!glBlendEquation) glBlendEquation = (PFNGLBLENDEQUATIONPROC)wglGetProcAddress("glBlendEquationEXT");
++ 	// If that fails use a no-op dummy
++ 	if (!glBlendEquation) glBlendEquation = glBlendEquationDummy;
++ 
 + 	if (CheckExtension("GL_ARB_texture_non_power_of_two")) gl.flags|=RFL_NPOT_TEXTURE;
   	if (CheckExtension("GL_ARB_texture_compression")) gl.flags|=RFL_TEXTURE_COMPRESSION;
   	if (CheckExtension("GL_EXT_texture_compression_s3tc")) gl.flags|=RFL_TEXTURE_COMPRESSION_S3TC;
 ! 	if (strstr(gl.vendorstring, "NVIDIA")) gl.flags|=RFL_NVIDIA;
 ! 	else if (strstr(gl.vendorstring, "ATI Technologies")) gl.flags|=RFL_ATI;
-! 
+  
 ! 	if (strcmp(version, "2.0") >= 0) gl.flags|=RFL_GL_20;
 ! 	if (strcmp(version, "2.1") >= 0) gl.flags|=RFL_GL_21;
 ! 	if (strcmp(version, "3.0") >= 0) gl.flags|=RFL_GL_30;
-! 
+  
   	glGetIntegerv(GL_MAX_TEXTURE_SIZE,&gl.max_texturesize);
   	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 + 
@@ -417,7 +417,7 @@
   
   }
   
---- 374,500 ----
+--- 374,492 ----
   
   void gl_PrintStartupLog()
   {
@@ -441,46 +441,38 @@
 ! 	Printf ("Max. combined uniforms: %d\n", v);
 ! 	glGetIntegerv(GL_MAX_COMBINED_UNIFORM_BLOCKS, &v);
 ! 	Printf ("Max. combined uniform blocks: %d\n", v);
-  
-+ }
+! 
+! }
+! 
+! //==========================================================================
+! //
+! // 
+! //
+! //==========================================================================
+! 
+! static void APIENTRY glBlendEquationDummy (GLenum mode)
+! {
+! 	// If this is not supported all non-existent modes are
+! 	// made to draw nothing.
+! 	if (mode == GL_FUNC_ADD)
+! 	{
+! 		glColorMask(true, true, true, true);
+! 	}
+! 	else
+! 	{
+! 		glColorMask(false, false, false, false);
+! 	}
+! }
   
 + //==========================================================================
 + //
 + // 
 + //
 + //==========================================================================
-+ 
-+ static void APIENTRY glBlendEquationDummy (GLenum mode)
-+ {
-+ 	// If this is not supported all non-existent modes are
-+ 	// made to draw nothing.
-+ 	if (mode == GL_FUNC_ADD)
-+ 	{
-+ 		glColorMask(true, true, true, true);
-+ 	}
-+ 	else
-+ 	{
-+ 		glColorMask(false, false, false, false);
-+ 	}
-+ }
-+ 
-+ //==========================================================================
-+ //
-+ // 
-+ //
-+ //==========================================================================
-+ #ifdef __ANDROID__
-+ #define GL_SOURCE0_RGB                                      GL_SRC0_RGB
-+ #define GL_SOURCE1_RGB                                      GL_SRC1_RGB
-+ #define GL_SOURCE2_RGB                                      GL_SRC2_RGB
-+ #define GL_SOURCE0_ALPHA                                    GL_SRC0_ALPHA
-+ #define GL_SOURCE1_ALPHA                                    GL_SRC1_ALPHA
-+ #define GL_SOURCE2_ALPHA                                    GL_SRC2_ALPHA
-+ #endif
 + void gl_SetTextureMode(int type)
 + {
 + 	static float white[] = {1.f,1.f,1.f,1.f};
-+ 
+  
 + 	if (type == TM_MASK)
 + 	{
 + #ifdef __ANDROID__

@@ -10,10 +10,7 @@ LOCAL_MODULE    := lzma_dev
 LOCAL_CFLAGS =  -O2 -Wall -fomit-frame-pointer -D_7ZIP_ST
 
 
-LOCAL_LDLIBS += -llog
-
 LOCAL_CFLAGS += -march=armv7-a -mfloat-abi=softfp
-LOCAL_LDLIBS += -Wl,--fix-cortex-a8
 
 LOCAL_C_INCLUDES :=   C/
 
@@ -33,9 +30,7 @@ LOCAL_SRC_FILES =  \
 	C/LzFind.c \
 	C/Lzma2Dec.c \
 	C/LzmaDec.c \
-	C/LzmaEnc.c \ 
-
-LOCAL_LDLIBS :=  -ldl -llog
+	C/LzmaEnc.c \
 
 include $(BUILD_STATIC_LIBRARY)
 
