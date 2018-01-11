@@ -398,10 +398,10 @@ int PortableShowKeyboard(void){
 	return 0;
 }
 
-char *cmd_to_run = NULL;
+const char *cmd_to_run = NULL;
 void PortableCommand(const char * cmd)
 {
-	*cmd_to_run = *cmd;
+	cmd_to_run = cmd;
 }
 
 float am_zoom = 0, am_pan_x = 0,am_pan_y = 0;
