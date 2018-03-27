@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <TextView
 
@@ -39,8 +39,7 @@ Then restart the Game." />
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/holo_blue" >
-        </View>
+            android:background="@color/holo_blue"></View>
 
         <TextView
 
@@ -61,8 +60,7 @@ Press Enter twice to change the value." />
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/holo_blue" >
-        </View>
+            android:background="@color/holo_blue"></View>
 
         <TextView
 
@@ -84,8 +82,7 @@ The default is 1024 and is usuall OK for most devices." />
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="number" >
-        </EditText>
+            android:inputType="number"></EditText>
     </LinearLayout>
 
 </ScrollView>

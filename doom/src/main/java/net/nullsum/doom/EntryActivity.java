@@ -4,25 +4,21 @@ import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.app.ActivityCompat;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MotionEvent;
-import android.content.pm.PackageManager;
-import static android.Manifest.*;
 
-import net.nullsum.doom.AppSettings;
-import net.nullsum.doom.OptionsFragment;
-import net.nullsum.doom.Utils;
 import com.beloko.touchcontrols.GamePadFragment;
 
+import static android.Manifest.permission;
 
-public class EntryActivity extends FragmentActivity  {
 
-    GamePadFragment gamePadFrag;
+public class EntryActivity extends FragmentActivity {
 
     /**
      * The serialization (saved instance state) Bundle key representing the
@@ -30,13 +26,14 @@ public class EntryActivity extends FragmentActivity  {
      */
     private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
     private static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1;
+    private GamePadFragment gamePadFrag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         if (ContextCompat.checkSelfPermission(this, permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{ permission.WRITE_EXTERNAL_STORAGE }, PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
+            ActivityCompat.requestPermissions(this, new String[]{permission.WRITE_EXTERNAL_STORAGE}, PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
         }
 
         setContentView(R.layout.activity_quake);
@@ -49,15 +46,13 @@ public class EntryActivity extends FragmentActivity  {
 
         GamePadFragment.gamepadActions = Utils.getGameGamepadConfig();
 
-        actionBar.addTab(actionBar.newTab().setText("Gzdoom").setTabListener(new TabListener<LaunchFragmentGZdoom>(this, "Gzdoom", LaunchFragmentGZdoom.class)));
-        actionBar.addTab(actionBar.newTab().setText("gamepad").setTabListener(new TabListener<GamePadFragment>(this, "gamepad", GamePadFragment.class)));
-        actionBar.addTab(actionBar.newTab().setText("options").setTabListener(new TabListener<OptionsFragment>(this, "options", OptionsFragment.class)));
+        actionBar.addTab(actionBar.newTab().setText("Gzdoom").setTabListener(new TabListener<>(this, "Gzdoom", LaunchFragmentGZdoom.class)));
+        actionBar.addTab(actionBar.newTab().setText("gamepad").setTabListener(new TabListener<>(this, "gamepad", GamePadFragment.class)));
+        actionBar.addTab(actionBar.newTab().setText("options").setTabListener(new TabListener<>(this, "options", OptionsFragment.class)));
 
-
-        String last_tab = AppSettings.getStringOption(getApplicationContext(), "last_tab", "");
         actionBar.setSelectedNavigationItem(0);
 
-        gamePadFrag = (GamePadFragment)getFragmentManager().findFragmentByTag("gamepad");
+        gamePadFrag = (GamePadFragment) getFragmentManager().findFragmentByTag("gamepad");
 
     }
 
@@ -87,34 +82,59 @@ public class EntryActivity extends FragmentActivity  {
     @Override
     public boolean onGenericMotionEvent(MotionEvent event) {
         if (gamePadFrag == null)
-            gamePadFrag = (GamePadFragment)getFragmentManager().findFragmentByTag("gamepad");
+            gamePadFrag = (GamePadFragment) getFragmentManager().findFragmentByTag("gamepad");
 
         return gamePadFrag.onGenericMotionEvent(event);
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)
-    {
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (gamePadFrag == null)
-            gamePadFrag = (GamePadFragment)getFragmentManager().findFragmentByTag("gamepad");
+            gamePadFrag = (GamePadFragment) getFragmentManager().findFragmentByTag("gamepad");
 
-        if (gamePadFrag.onKeyDown(keyCode, event))
-            return true;
-        else
-            return super.onKeyDown(keyCode, event);
+        return gamePadFrag.onKeyDown(keyCode, event) || super.onKeyDown(keyCode, event);
     }
 
     @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event)
-    {
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
         if (gamePadFrag == null)
-            gamePadFrag = (GamePadFragment)getFragmentManager().findFragmentByTag("gamepad");
+            gamePadFrag = (GamePadFragment) getFragmentManager().findFragmentByTag("gamepad");
 
-        if ( gamePadFrag.onKeyUp(keyCode, event))
-            return true;
-        else
-            return super.onKeyUp(keyCode, event);
+        return gamePadFrag.onKeyUp(keyCode, event) || super.onKeyUp(keyCode, event);
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // dirty hack :(
+                    final ActionBar actionBar = getActionBar();
+                    actionBar.setSelectedNavigationItem(1);
+                    actionBar.setSelectedNavigationItem(0);
+                }
+            }
+        }
+    }
+
+//    public  boolean isStoragePermissionGranted() {
+//        if (Build.VERSION.SDK_INT >= 23) {
+//            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//                    == PackageManager.PERMISSION_GRANTED) {
+//                //Log.v(TAG,"Permission is granted");
+//                return true;
+//            } else {
+//
+//                //Log.v(TAG,"Permission is revoked");
+//                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+//                return false;
+//            }
+//        }
+//        else { //permission is automatically granted on sdk<23 upon installation
+//            //Log.v(TAG,"Permission is granted");
+//            return true;
+//        }
+//    }
 
     public static class TabListener<T extends Fragment> implements ActionBar.TabListener {
         private final FragmentActivity mActivity;
@@ -124,14 +144,10 @@ public class EntryActivity extends FragmentActivity  {
         private Fragment mFragment;
 
         public TabListener(FragmentActivity activity, String tag, Class<T> clz) {
-            this(activity, tag, clz, null);
-        }
-
-        public TabListener(FragmentActivity activity, String tag, Class<T> clz, Bundle args) {
             mActivity = activity;
             mTag = tag;
             mClass = clz;
-            mArgs = args;
+            mArgs = null;
 
             // Check to see if we already have a fragment for this tab, probably
             // from a previously saved state.  If so, deactivate it, because our
@@ -141,7 +157,7 @@ public class EntryActivity extends FragmentActivity  {
             if (mFragment == null) //Actually create all fragments NOW
             {
                 mFragment = Fragment.instantiate(mActivity, mClass.getName(), mArgs);
-                FragmentTransaction ft =  mActivity.getFragmentManager().beginTransaction();
+                FragmentTransaction ft = mActivity.getFragmentManager().beginTransaction();
                 ft.add(android.R.id.content, mFragment, mTag);
                 ft.commit();
             }
@@ -176,39 +192,6 @@ public class EntryActivity extends FragmentActivity  {
 
         public void onTabReselected(Tab tab, FragmentTransaction ft) {
             //Toast.makeText(mActivity, "Reselected!", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-//    public  boolean isStoragePermissionGranted() {
-//        if (Build.VERSION.SDK_INT >= 23) {
-//            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-//                    == PackageManager.PERMISSION_GRANTED) {
-//                //Log.v(TAG,"Permission is granted");
-//                return true;
-//            } else {
-//
-//                //Log.v(TAG,"Permission is revoked");
-//                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-//                return false;
-//            }
-//        }
-//        else { //permission is automatically granted on sdk<23 upon installation
-//            //Log.v(TAG,"Permission is granted");
-//            return true;
-//        }
-//    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // dirty hack :(
-                    final ActionBar actionBar = getActionBar();
-                    actionBar.setSelectedNavigationItem(1);
-                    actionBar.setSelectedNavigationItem(0);
-                }
-            }
         }
     }
 

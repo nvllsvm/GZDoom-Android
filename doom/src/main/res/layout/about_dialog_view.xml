@@ -1,14 +1,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/relativeLayout1"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content">
 
     <ScrollView
         android:id="@+id/scrollview"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/linearLayout2"
-        android:layout_alignParentTop="true" >
+        android:layout_alignParentTop="true">
 
         <TextView
             android:id="@+id/about_text_textview"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/about_ok_button"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true" >
+        android:layout_alignParentRight="true">
 
         <Button
             android:id="@+id/about_changes_button"

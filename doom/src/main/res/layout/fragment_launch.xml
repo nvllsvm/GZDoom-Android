@@ -1,42 +1,39 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/select_render_linearlayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <LinearLayout
             android:id="@+id/render_gl_linearlayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" >
+            android:layout_weight="1">
 
             <ImageView
 
                 android:layout_width="100dp"
                 android:layout_height="33dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginRight="10dp"
-                />
+                android:layout_marginRight="10dp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/render_soft_linearlayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" >
+            android:layout_weight="1">
 
             <ImageView
 
                 android:layout_width="100dp"
                 android:layout_height="33dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginRight="10dp"
-                />
+                android:layout_marginRight="10dp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -45,7 +42,7 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/extra_args_linearlayout"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/select_render_linearlayout" >
+        android:layout_below="@+id/select_render_linearlayout">
 
         <ListView
             android:id="@+id/listView"
@@ -54,9 +51,8 @@
             android:layout_above="@+id/extra_args_linearlayout"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/select_render_linearlayout"
-           
-            android:dividerHeight="5dp" >
-        </ListView>
+
+            android:dividerHeight="5dp"></ListView>
 
         <TextView
             android:id="@+id/copy_wads_textview"
@@ -70,7 +66,7 @@
         android:id="@+id/extra_args_linearlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/start_buttons_linearlayout" >
+        android:layout_above="@+id/start_buttons_linearlayout">
 
         <TextView
             android:id="@+id/args_textview"
@@ -93,22 +89,20 @@
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/args_history_imageview"
             android:layout_toRightOf="@+id/extra_args_textview"
-            android:ems="10" >
-        </EditText>
+            android:ems="10"></EditText>
 
         <ImageView
             android:id="@+id/args_history_imageview"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_alignParentRight="true"
-            />
+            android:layout_alignParentRight="true" />
     </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/start_buttons_linearlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" >
+        android:layout_alignParentBottom="true">
 
         <Button
             android:id="@+id/start_full"
@@ -116,16 +110,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="Full"
-            android:textAppearance="?android:attr/textAppearanceLarge" >
-        </Button>
-         <Button
+            android:textAppearance="?android:attr/textAppearanceLarge"></Button>
+
+        <Button
             android:id="@+id/start_wads"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="WADs"
-            android:textAppearance="?android:attr/textAppearanceLarge" >
-        </Button>
+            android:textAppearance="?android:attr/textAppearanceLarge"></Button>
     </LinearLayout>
 
 </RelativeLayout>
